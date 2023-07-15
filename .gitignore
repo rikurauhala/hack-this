@@ -1,0 +1,7 @@
+build
+data
+node_modules
+scripts
+sql
+
+.env
