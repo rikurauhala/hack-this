@@ -33,6 +33,6 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["./web/tsconfig.json"]
+    "project": ["./tsconfig.json", "./web/tsconfig.json"]
   }
 }
