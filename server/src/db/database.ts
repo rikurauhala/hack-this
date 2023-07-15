@@ -26,6 +26,14 @@ class Database {
     });
   }
 
+  public registerUser(username: string, passwordHash: string) {
+    return new Promise(() => {
+      this.db.exec(
+        `INSERT INTO users (username, password_hash) VALUES ('${username}', '${passwordHash}')`
+      );
+    });
+  }
+
   public close(): void {
     this.db.close((error) => {
       if (error) {
