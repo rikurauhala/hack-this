@@ -1,9 +1,9 @@
-interface UsernameValidity {
+interface Validity {
   valid: boolean;
   errorMessage?: string;
 }
 
-export const validateUsername = (username: string): UsernameValidity => {
+export const validateUsername = (username: string): Validity => {
   if (username.length < 4) {
     return {
       valid: false,
@@ -23,6 +23,19 @@ export const validateUsername = (username: string): UsernameValidity => {
     return {
       valid: false,
       errorMessage: 'Username must only contain alphanumeric characters, dashes, dots, or underscores',
+    };
+  }
+
+  return {
+    valid: true,
+  };
+};
+
+export const validatePassword = (password: string): Validity => {
+  if (password.length < 4) {
+    return {
+      valid: false,
+      errorMessage: 'Password must be at least 4 characters long',
     };
   }
 

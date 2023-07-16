@@ -1,8 +1,8 @@
+import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import Router from 'express-promise-router';
 import { db } from '../db';
-import bcrypt from 'bcrypt';
-import { validateUsername } from '../utils/validators';
+import { validatePassword, validateUsername } from '../utils/validators';
 
 const registerRouter = Router();
 
@@ -14,6 +14,10 @@ registerRouter.post('/', async (request: Request, response: Response) => {
       response.status(400).json({ message: usernameValid.errorMessage });
     }
     const password = request.body.password as string;
+    const passwordValid = validatePassword(password);
+    if (!passwordValid.valid) {
+      response.status(400).json({ message: passwordValid.errorMessage });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
