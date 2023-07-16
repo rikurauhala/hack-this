@@ -8,17 +8,27 @@ const Register = (): JSX.Element => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [registrationStatus, setRegistrationStatus] = useState<RegistrationStatus>(null);
 
+  const clearStatusMessage = () => {
+    const TIMEOUT_MS = 5000;
+    setTimeout(() => {
+      setErrorMessage('');
+      setRegistrationStatus(null);
+    }, TIMEOUT_MS);
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await registerUser(username, password);
       setRegistrationStatus('SUCCESS');
+      clearStatusMessage();
       setUsername('');
       setPassword('');
     } catch (error: unknown) {
       if (error instanceof Error) {
         setErrorMessage(error.message);
         setRegistrationStatus('FAILURE');
+        clearStatusMessage();
         console.error('Error during registration:', error.message);
       } else {
         console.error('Error during registration:', String(error));
