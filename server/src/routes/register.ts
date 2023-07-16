@@ -14,10 +14,10 @@ registerRouter.post('/', async (request: Request, response: Response) => {
 
     await db.registerUser(username, hashedPassword);
     console.log('Registration successful');
-    response.status(201).send('Registration successful');
+    response.status(201).json({ message: 'Registration successful' });
   } catch (error) {
     console.error('Error during registration:', error);
-    response.status(500).send('Error during registration');
+    response.status(500).json({ message: 'Error during registration' });
   }
 });
 
