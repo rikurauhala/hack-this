@@ -1,17 +1,22 @@
 export type RegistrationStatus = 'SUCCESS' | 'FAILURE' | null;
 
 interface RegistrationStatusMessageProps {
-  registrationStatus: RegistrationStatus
+  errorMessage: string;
+  registrationStatus: RegistrationStatus;
 }
 
-const RegistrationStatusMessage = ({ registrationStatus }: RegistrationStatusMessageProps): JSX.Element => {
+const RegistrationStatusMessage = (props: RegistrationStatusMessageProps): JSX.Element => {
+  const { errorMessage, registrationStatus } = props;
+
   if (registrationStatus === 'SUCCESS') {
     return <p style={{ color: '#5FAD56' }}>Registration successful!</p>;
-  } else if (registrationStatus === 'FAILURE') {
-    return <p style={{ color: '#FF5733' }}>Registration failed. Please try again.</p>;
-  } else {
-    return <></>;
   }
+
+  if (registrationStatus === 'FAILURE') {
+    return <p style={{ color: '#FF5733' }}>{errorMessage}</p>;
+  }
+
+  return <></>;
 };
 
 export default RegistrationStatusMessage;

@@ -1,0 +1,32 @@
+interface UsernameValidity {
+  valid: boolean;
+  errorMessage?: string;
+}
+
+export const validateUsername = (username: string): UsernameValidity => {
+  if (username.length < 4) {
+    return {
+      valid: false,
+      errorMessage: 'Username must be at least 4 characters long',
+    };
+  }
+
+  if (username.length >= 30) {
+    return {
+      valid: false,
+      errorMessage: 'Username cannot exceed 30 characters',
+    };
+  }
+
+  const allowedCharacters = /^[a-zA-Z0-9_.-]+$/;
+  if (!allowedCharacters.test(username)) {
+    return {
+      valid: false,
+      errorMessage: 'Username must only contain alphanumeric characters, dashes, dots, or underscores',
+    };
+  }
+
+  return {
+    valid: true,
+  };
+};

@@ -3,8 +3,9 @@ import RegistrationStatusMessage, { RegistrationStatus } from '../components/Reg
 import { registerUser } from '../services/register';
 
 const Register = (): JSX.Element => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [registrationStatus, setRegistrationStatus] = useState<RegistrationStatus>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -14,9 +15,14 @@ const Register = (): JSX.Element => {
       setRegistrationStatus('SUCCESS');
       setUsername('');
       setPassword('');
-    } catch (error) {
-      setRegistrationStatus('FAILURE');
-      console.error('Error during registration:', error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+        setRegistrationStatus('FAILURE');
+        console.error('Error during registration:', error.message);
+      } else {
+        console.error('Error during registration:', String(error));
+      }
     }
   };
 
@@ -68,7 +74,10 @@ const Register = (): JSX.Element => {
           </tbody>
         </table>
       </form>
-      <RegistrationStatusMessage registrationStatus={registrationStatus} />
+      <RegistrationStatusMessage
+        errorMessage={errorMessage}
+        registrationStatus={registrationStatus}
+      />
     </>
   );
 };
