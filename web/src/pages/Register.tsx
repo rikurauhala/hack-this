@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import RegistrationStatusMessage, { RegistrationStatus } from '../components/Registration/RegistrationStatusmessage';
+import RegistrationForm from '../components/registration/RegistrationForm';
+import RegistrationStatusMessage, { RegistrationStatus } from '../components/registration/RegistrationStatusMessage';
 import { registerUser } from '../services/register';
 
 const Register = (): JSX.Element => {
@@ -36,54 +37,27 @@ const Register = (): JSX.Element => {
     }
   };
 
+  const handleUsernameChange = (newUsername: string) => {
+    setUsername(newUsername);
+  };
+
+  const handlePasswordChange = (newPassword: string) => {
+    setPassword(newPassword);
+  };
+
   return (
     <>
       <h2>Register</h2>
-      <form
-        onSubmit={(event) => {
+      <RegistrationForm
+        handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();
           void handleSubmit(event);
         }}
-        style={{ backgroundColor: '#2b4f78', width: '305px' }}
-      >
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <label htmlFor="username">Username:</label>
-              </td>
-              <td>
-                <input
-                  id="username"
-                  onChange={(event) => setUsername(event.target.value)}
-                  type="text"
-                  value={username}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="password">Password:</label>
-              </td>
-              <td>
-                <input
-                  id="password"
-                  onChange={(event) => setPassword(event.target.value)}
-                  type="password"
-                  value={password}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td colSpan={2}>
-                <button style={{ width: '100%' }} type="submit">
-                  Register
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+        password={password}
+        setPassword={handlePasswordChange}
+        setUsername={handleUsernameChange}
+        username={username}
+      />
       <RegistrationStatusMessage
         errorMessage={errorMessage}
         registrationStatus={registrationStatus}
