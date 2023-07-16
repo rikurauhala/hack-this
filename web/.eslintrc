@@ -18,6 +18,7 @@
     "@typescript-eslint/restrict-plus-operands": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "arrow-spacing": ["error", { "before": true, "after": true }],
+    "eol-last": ["error", "always"],
     "eqeqeq": "error",
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "jsx-quotes": ["error", "prefer-double"],

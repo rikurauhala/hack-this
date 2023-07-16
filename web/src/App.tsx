@@ -1,17 +1,16 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-
-const Home = () => <h1>Home Page</h1>;
-const Register = () => <h1>Register</h1>;
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NavigationBar from './components/NavigationBar';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
-        <Link to="/">home</Link>
-        <Link to="/register">register</Link>
-      </div>
+      <NavigationBar />
       <Routes>
         <Route element={<Home />} path="/" />
+        <Route element={<Login />} path="/login" />
         <Route element={<Register />} path="/register" />
       </Routes>
     </BrowserRouter>
