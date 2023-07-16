@@ -11,11 +11,16 @@ interface RegistrationFormProps {
 const RegistrationForm = (props: RegistrationFormProps): JSX.Element => {
   const { handleSubmit, password, setUsername, setPassword, username } = props;
 
+  const style = {
+    backgroundColor: '#2b4f78',
+    borderRadius: '8px',
+    display: 'inline-block',
+    margin: 'auto',
+    padding: '15px',
+  };
+
   return (
-    <form
-      onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event)}
-      style={{ backgroundColor: '#2b4f78', width: '305px' }}
-    >
+    <form onSubmit={(event) => handleSubmit(event)} style={style}>
       <table>
         <tbody>
           <tr>
