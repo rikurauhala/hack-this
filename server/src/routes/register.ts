@@ -13,7 +13,7 @@ registerRouter.post('/', async (request: Request, response: Response) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await db.registerUser(username, hashedPassword);
-
+    console.log('Registration successful');
     response.status(201).send('Registration successful');
   } catch (error) {
     console.error('Error during registration:', error);

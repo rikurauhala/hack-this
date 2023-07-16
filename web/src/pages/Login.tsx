@@ -1,6 +1,6 @@
 const Login = (): JSX.Element => (
   <>
-    <h1>Login</h1>
+    <h2>Login</h2>
     <p>To be implemented.</p>
   </>
 );

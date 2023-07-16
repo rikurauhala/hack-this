@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
+import RegistrationStatusMessage, { RegistrationStatus } from '../components/Registration/RegistrationStatusmessage';
 import { registerUser } from '../services/register';
 
 const Register = (): JSX.Element => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [registrationStatus, setRegistrationStatus] = useState<RegistrationStatus>(null);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const result = registerUser(username, password);
-      console.log(result);
+      await registerUser(username, password);
+      setRegistrationStatus('SUCCESS');
+      setUsername('');
+      setPassword('');
     } catch (error) {
+      setRegistrationStatus('FAILURE');
       console.error('Error during registration:', error);
     }
   };
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
+    <>
+      <h2>Register</h2>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          void handleSubmit(event);
+        }}
+        style={{ backgroundColor: '#2b4f78', width: '305px' }}
+      >
         <table>
           <tbody>
             <tr>
@@ -47,11 +58,18 @@ const Register = (): JSX.Element => {
                 />
               </td>
             </tr>
+            <tr>
+              <td colSpan={2}>
+                <button style={{ width: '100%' }} type="submit">
+                  Register
+                </button>
+              </td>
+            </tr>
           </tbody>
         </table>
-        <button type="submit">Register</button>
       </form>
-    </div>
+      <RegistrationStatusMessage registrationStatus={registrationStatus} />
+    </>
   );
 };
 

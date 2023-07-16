@@ -8,6 +8,7 @@ const App = (): JSX.Element => {
   return (
     <BrowserRouter>
       <NavigationBar />
+      <hr style={{ color: '#3F72AF' }} />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Login />} path="/login" />
