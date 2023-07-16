@@ -1,5 +1,5 @@
 interface NavigationBarDividerProps {
-  character: string,
+  character: string;
 }
 
 const NavigationBarDivider = ({ character }: NavigationBarDividerProps): JSX.Element => (
