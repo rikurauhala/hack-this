@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import StatusMessage, { Status } from '../components/common/StatusMessage';
 import LoginForm from '../components/login/LoginForm';
 import { login } from '../services/login';
@@ -8,6 +9,8 @@ const Login = (): JSX.Element => {
   const [password, setPassword] = useState<string>('');
   const [message, setMessage] = useState<string>('');
   const [loginStatus, setLoginStatus] = useState<Status>(null);
+
+  const navigate = useNavigate();
 
   const clearStatusMessage = () => {
     const TIMEOUT_MS = 5000;
@@ -27,6 +30,9 @@ const Login = (): JSX.Element => {
       clearStatusMessage();
       setUsername('');
       setPassword('');
+      setTimeout(() => {
+        return navigate('/');
+      }, 2000);
     } catch (error: unknown) {
       if (error instanceof Error) {
         setMessage(error.message);
