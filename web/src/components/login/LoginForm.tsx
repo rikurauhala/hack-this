@@ -1,7 +1,7 @@
 import { FormEvent } from 'react';
 import Form from '../common/Form';
 
-interface RegistrationFormProps {
+interface LoginFormProps {
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
   password: string;
   setPassword: (newPassword: string) => void;
@@ -9,9 +9,9 @@ interface RegistrationFormProps {
   username: string;
 }
 
-const RegistrationForm = (props: RegistrationFormProps): JSX.Element => (
+const LoginForm = (props: LoginFormProps): JSX.Element => (
   <Form
-    buttonText="Register"
+    buttonText="Login"
     handleSubmit={props.handleSubmit}
     password={props.password}
     setPassword={props.setPassword}
@@ -20,4 +20,4 @@ const RegistrationForm = (props: RegistrationFormProps): JSX.Element => (
   />
 );
 
-export default RegistrationForm;
+export default LoginForm;

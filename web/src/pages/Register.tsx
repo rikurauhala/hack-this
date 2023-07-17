@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
+import StatusMessage, { Status } from '../components/common/StatusMessage';
 import RegistrationForm from '../components/registration/RegistrationForm';
-import RegistrationStatusMessage, { RegistrationStatus } from '../components/registration/RegistrationStatusMessage';
 import { registerUser } from '../services/register';
 
 const Register = (): JSX.Element => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>('');
-  const [registrationStatus, setRegistrationStatus] = useState<RegistrationStatus>(null);
+  const [message, setMessage] = useState<string>('');
+  const [registrationStatus, setRegistrationStatus] = useState<Status>(null);
 
   const clearStatusMessage = () => {
     const TIMEOUT_MS = 5000;
     setTimeout(() => {
-      setErrorMessage('');
+      setMessage('');
       setRegistrationStatus(null);
     }, TIMEOUT_MS);
   };
@@ -21,13 +21,14 @@ const Register = (): JSX.Element => {
     event.preventDefault();
     try {
       await registerUser(username, password);
+      setMessage('Registration successful');
       setRegistrationStatus('SUCCESS');
       clearStatusMessage();
       setUsername('');
       setPassword('');
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setErrorMessage(error.message);
+        setMessage(error.message);
         setRegistrationStatus('FAILURE');
         clearStatusMessage();
         console.error('Error during registration:', error.message);
@@ -58,9 +59,9 @@ const Register = (): JSX.Element => {
         setUsername={handleUsernameChange}
         username={username}
       />
-      <RegistrationStatusMessage
-        errorMessage={errorMessage}
-        registrationStatus={registrationStatus}
+      <StatusMessage
+        message={message}
+        status={registrationStatus}
       />
     </>
   );
