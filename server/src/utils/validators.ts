@@ -4,6 +4,13 @@ interface Validity {
 }
 
 export const validateUsername = (username: string): Validity => {
+  if (username.length === 0) {
+    return {
+      valid: false,
+      errorMessage: 'Username cannot be empty',
+    };
+  }
+
   if (username.length < 4) {
     return {
       valid: false,
@@ -32,6 +39,13 @@ export const validateUsername = (username: string): Validity => {
 };
 
 export const validatePassword = (password: string): Validity => {
+  if (password.length === 0) {
+    return {
+      valid: false,
+      errorMessage: 'Password cannot be empty',
+    };
+  }
+
   if (password.length < 4) {
     return {
       valid: false,
