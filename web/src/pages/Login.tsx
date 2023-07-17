@@ -21,7 +21,7 @@ const Login = (): JSX.Element => {
     event.preventDefault();
     try {
       const user = await login(username, password);
-      window.localStorage.setItem('user', JSON.stringify(user));
+      window.localStorage.setItem('user', JSON.stringify(user.data));
       setMessage('Login successful');
       setLoginStatus('SUCCESS');
       clearStatusMessage();
