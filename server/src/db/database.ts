@@ -1,4 +1,5 @@
 import sqlite3 from 'sqlite3';
+import { User } from '../types';
 
 class Database {
   private db: sqlite3.Database;
@@ -23,6 +24,25 @@ class Database {
           resolve(rows as T[]);
         }
       });
+    });
+  }
+
+  public getUser(username: string): Promise<User | null> {
+    return new Promise<User | null>((resolve, reject) => {
+      this.db.get(
+        `SELECT id, username, password_hash as passwordHash FROM users WHERE username = '${username}'`,
+        (error: Error | null, row: User) => {
+          if (error) {
+            reject(error);
+          } else {
+            if (row) {
+              resolve(row);
+            } else {
+              resolve(null);
+            }
+          }
+        }
+      );
     });
   }
 
