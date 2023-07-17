@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Logout from './pages/Logout';
 import Register from './pages/Register';
 
 const App = (): JSX.Element => {
@@ -27,6 +28,7 @@ const App = (): JSX.Element => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />
+            <Route element={<Logout />} path="/logout" />
             <Route element={<Register />} path="/register" />
           </Routes>
         </div>
