@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import NavigationBarDivider from './NavigationBarDivider';
 import NavigationBarLink from './NavigationBarLink';
 
@@ -15,15 +16,18 @@ const NavigationBar = (): JSX.Element => {
   const textLogOut = formatText('log out');
   const textRegister = formatText('register');
 
-  const [user, setUser] = useState<string>();
+  const [user, setUser] = useState<string>('');
+  const location = useLocation();
 
   useEffect(() => {
     const userJSON = window.localStorage.getItem('user');
     if (userJSON) {
       const userJson = JSON.parse(userJSON) as User;
       setUser(userJson.username);
+    } else {
+      setUser('');
     }
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
