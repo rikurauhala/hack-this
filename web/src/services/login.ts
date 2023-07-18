@@ -3,6 +3,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 interface LoginResponse {
   token: string;
   username: string;
+  message?: string;
 }
 
 export const login = async (username: string, password: string): Promise<AxiosResponse<LoginResponse>> => {
@@ -14,7 +15,12 @@ export const login = async (username: string, password: string): Promise<AxiosRe
     if (axios.isAxiosError(error)) {
       const responseError = error as AxiosError;
       console.error('Error during login:', responseError.response?.data);
-      throw new Error('Login failed.');
+      if (responseError.response?.data) {
+        const data = responseError.response.data as LoginResponse;
+        throw new Error(data.message);
+      } else {
+        throw new Error('Login failed.');
+      }
     } else {
       console.error('Error during login:', error);
       throw new Error('Login failed.');
