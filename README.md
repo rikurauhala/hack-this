@@ -55,3 +55,15 @@ $ cd ../frontend
 # Install dependencies
 $ npm install
 ```
+
+## How to run
+
+Use the following commands to run the backend and frontend separately. Make sure you are in the correct directories for each command.
+
+```bash
+# Run the backend
+$ npm run dev
+
+# Run the frontend
+$ npm start
+```
