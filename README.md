@@ -27,6 +27,9 @@ A lesson on web application security
 
 **Hack This** is a simple fullstack web application that contains several security vulnerabilities. The application can be used to demonstrate how mistakes by the developers can lead to compromised security.
 
+> **Warning**  
+> Do not use the code found in this repository in production. Also, do not use it to do anything illegal or exploit systems that you do not own or have a permission to enter. For educational purposes only.
+
 ## How to install
 
 Follow the instructions to set up the project.
