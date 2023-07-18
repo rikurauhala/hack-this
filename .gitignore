@@ -1,8 +1,9 @@
 build
-data
 node_modules
 requests
 scripts
 sql
 
 .env
+
+*.db
