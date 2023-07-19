@@ -41,7 +41,13 @@ To install the application, start by downloading the source code from the [proje
 Change directory to the newly created folder containing the source code.
 
 ```bash
+# Move into an appropriate directory where you want to store the source code
+$ cd Downloads
+
+# Get the source code
 $ git clone git@github.com:rikurauhala/hack-this.git
+
+# Move into the project directory
 $ cd ./hack-this
 ```
 
