@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { FormEvent } from 'react';
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 
 interface FormProps {
   buttonText: string;
@@ -15,8 +16,11 @@ const Form = (props: FormProps): JSX.Element => {
 
   return (
     <form className="w-96 mx-auto mt-8 p-4 bg-white rounded-lg shadow-md" onSubmit={(event) => handleSubmit(event)}>
+      <div className="mb-4 flex justify-center">
+        <UserCircleIcon className="w-20 h-20 text-blue-600" />
+      </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700" htmlFor="username">Username</label>
+        <label className="block text-sm font-medium text-gray-950" htmlFor="username">Username</label>
         <input
           className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
           id="username"
@@ -26,7 +30,7 @@ const Form = (props: FormProps): JSX.Element => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700" htmlFor="password">Password</label>
+        <label className="block text-sm font-medium text-gray-950" htmlFor="password">Password</label>
         <input
           className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
           id="password"
