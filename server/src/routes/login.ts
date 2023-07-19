@@ -41,5 +41,4 @@ loginRouter.post('/', async (request: Request, response: Response) => {
   }
 });
 
-
 export default loginRouter;
