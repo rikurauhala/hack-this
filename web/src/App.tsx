@@ -6,25 +6,11 @@ import Logout from './pages/Logout';
 import Register from './pages/Register';
 
 const App = (): JSX.Element => {
-  const styleMain = {
-    display: 'flex',
-    justifyContent: 'center',
-  };
-
-  const styleContainer = {
-    backgroundColor: '#1f3957',
-    borderRadius: '8px',
-    maxWidth: '900px',
-    padding: '20px',
-    width: '90%',
-  };
-
   return (
     <BrowserRouter>
-      <div id="main" style={styleMain}>
-        <div id="container" style={styleContainer}>
+      <div className="flex justify-center min-h-screen bg-gray-100">
+        <div className="container mx-auto bg-gray-200">
           <NavigationBar />
-          <hr style={{ color: '#3F72AF' }} />
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />

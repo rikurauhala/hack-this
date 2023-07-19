@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { FormEvent } from 'react';
 
 interface FormProps {
@@ -12,53 +13,31 @@ interface FormProps {
 const Form = (props: FormProps): JSX.Element => {
   const { buttonText, handleSubmit, password, setPassword, setUsername, username } = props;
 
-  const style = {
-    backgroundColor: '#2b4f78',
-    borderRadius: '8px',
-    display: 'inline-block',
-    margin: 'auto',
-    padding: '15px',
-  };
-
   return (
-    <form onSubmit={(event) => handleSubmit(event)} style={style}>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <label htmlFor="username">Username:</label>
-            </td>
-            <td>
-              <input
-                id="username"
-                onChange={(event) => setUsername(event.target.value)}
-                type="text"
-                value={username}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="password">Password:</label>
-            </td>
-            <td>
-              <input
-                id="password"
-                onChange={(event) => setPassword(event.target.value)}
-                type="password"
-                value={password}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colSpan={2}>
-              <button style={{ width: '100%' }} type="submit">
-                {buttonText}
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <form className="w-96 mx-auto mt-8 p-4 bg-white rounded-lg shadow-md" onSubmit={(event) => handleSubmit(event)}>
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700" htmlFor="username">Username</label>
+        <input
+          className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          id="username"
+          onChange={(event) => setUsername(event.target.value)}
+          type="text"
+          value={username}
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700" htmlFor="password">Password</label>
+        <input
+          className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          id="password"
+          onChange={(event) => setPassword(event.target.value)}
+          type="password"
+          value={password}
+        />
+      </div>
+      <button className="bg-blue-500 text-white w-full py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">
+        {buttonText}
+      </button>
     </form>
   );
 };

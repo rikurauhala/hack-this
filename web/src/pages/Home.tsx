@@ -1,6 +1,8 @@
+import PageTitle from '../components/common/PageTitle';
+
 const Home = (): JSX.Element => (
   <>
-    <h2>Home</h2>
+    <PageTitle text="Home" />
     <p>
       Welcome to the <b>Hack This</b> web application security demo.
     </p>

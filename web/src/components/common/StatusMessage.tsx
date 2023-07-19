@@ -1,13 +1,22 @@
-export type Status = 'SUCCESS' | 'FAILURE' | null;
+export type Status = 'SUCCESS' | 'ERROR' | null;
 
-interface StatusMessageProps {
+interface FloatingStatusMessageProps {
   message: string;
   status: Status;
 }
 
-const StatusMessage = ({ message, status }: StatusMessageProps): JSX.Element => {
-  const color = status === 'SUCCESS' ? '#5FAD56' : '#FF5733';
-  return <p style={{ color: color }}>{message}</p>;
+const FloatingStatusMessage = ({ message, status }: FloatingStatusMessageProps): JSX.Element => {
+  if (!message) return <></>;
+
+  const getColorClass = () => {
+    return status === 'SUCCESS' ? 'bg-green-500' : 'bg-red-500';
+  };
+
+  return (
+    <div className={`fixed bottom-4 right-4 py-2 px-4 text-white rounded-md ${getColorClass()} shadow-md`}>
+      {message}
+    </div>
+  );
 };
 
-export default StatusMessage;
+export default FloatingStatusMessage;

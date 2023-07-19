@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PageTitle from '../components/common/PageTitle';
 import StatusMessage from '../components/common/StatusMessage';
 
 const Logout = (): JSX.Element => {
@@ -18,7 +19,7 @@ const Logout = (): JSX.Element => {
 
   return (
     <>
-      <h2>Logout</h2>
+      <PageTitle text="Logout" />
       <StatusMessage
         message={'Logging out... see you!'}
         status={'SUCCESS'}

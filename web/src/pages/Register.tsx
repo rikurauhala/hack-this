@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StatusMessage, { Status } from '../components/common/StatusMessage';
 import RegistrationForm from '../components/registration/RegistrationForm';
 import { registerUser } from '../services/register';
+import PageTitle from '../components/common/PageTitle';
 
 const Register = (): JSX.Element => {
   const [username, setUsername] = useState<string>('');
@@ -29,7 +30,7 @@ const Register = (): JSX.Element => {
     } catch (error: unknown) {
       if (error instanceof Error) {
         setMessage(error.message);
-        setRegistrationStatus('FAILURE');
+        setRegistrationStatus('ERROR');
         clearStatusMessage();
         console.error('Error during registration:', error.message);
       } else {
@@ -48,7 +49,7 @@ const Register = (): JSX.Element => {
 
   return (
     <>
-      <h2>Register</h2>
+      <PageTitle text="Register" />
       <RegistrationForm
         handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();

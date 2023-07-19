@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PageTitle from '../components/common/PageTitle';
 import StatusMessage, { Status } from '../components/common/StatusMessage';
 import LoginForm from '../components/login/LoginForm';
 import { login } from '../services/login';
@@ -36,7 +37,7 @@ const Login = (): JSX.Element => {
     } catch (error: unknown) {
       if (error instanceof Error) {
         setMessage(error.message);
-        setLoginStatus('FAILURE');
+        setLoginStatus('ERROR');
         clearStatusMessage();
         console.error('Error during login:', error.message);
       } else {
@@ -55,7 +56,7 @@ const Login = (): JSX.Element => {
 
   return (
     <>
-      <h2>Login</h2>
+      <PageTitle text="Login" />
       <LoginForm
         handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();

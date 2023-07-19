@@ -3,7 +3,7 @@ interface NavigationBarDividerProps {
 }
 
 const NavigationBarDivider = ({ character }: NavigationBarDividerProps): JSX.Element => (
-  <span style={{ color: '#3F72AF', padding: 5 }}> {character} </span>
+  <span className="text-white"> {character} </span>
 );
 
 export default NavigationBarDivider;
