@@ -48,7 +48,7 @@ const Register = (): JSX.Element => {
   };
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-4">
       <PageTitle text="Register" />
       <RegistrationForm
         handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
@@ -64,7 +64,7 @@ const Register = (): JSX.Element => {
         message={message}
         status={registrationStatus}
       />
-    </>
+    </div>
   );
 };
 
