@@ -28,7 +28,7 @@ const NavigationBar = (): JSX.Element => {
   }, [location.pathname]);
 
   return (
-    <div className="bg-blue-800 py-4 flex justify-between items-center">
+    <div className="py-4 flex justify-between items-center bg-gradient-to-r from-indigo-500 to-sky-500">
       <div className="ml-4">
         <NavigationBarLink text={textHome} to="/" />
         <NavigationBarDivider />
