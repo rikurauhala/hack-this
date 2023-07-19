@@ -49,7 +49,7 @@ $ cd ./hack-this
 
 The repository contains the source code of both the frontend and the backend. Let's set up the backend first.
 
-See below for a list of commands to run. Fill in the 
+See below for a list of commands to run. Fill in the environment variables `DATABASE_URL` and `SECRET` with your own values.
 
 ```bash
 # Change directory into the backend folder
