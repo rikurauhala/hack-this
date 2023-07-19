@@ -5,8 +5,8 @@ import AppRoutes from './routes';
 const App = (): JSX.Element => {
   return (
     <BrowserRouter>
-      <div className="flex justify-center min-h-screen bg-gray-100">
-        <div className="container mx-auto bg-gradient-to-b from-gray-200 to-slate-200">
+      <div className="flex justify-center min-h-screen bg-gray-50">
+        <div className="container max-w-screen-md mx-auto bg-gradient-to-b from-gray-200 to-slate-100">
           <NavigationBar />
           <AppRoutes />
         </div>
