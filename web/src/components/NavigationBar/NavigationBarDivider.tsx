@@ -1,9 +1,5 @@
-interface NavigationBarDividerProps {
-  character: string;
-}
-
-const NavigationBarDivider = ({ character }: NavigationBarDividerProps): JSX.Element => (
-  <span className="text-white"> {character} </span>
+const NavigationBarDivider = (): JSX.Element => (
+  <span className="mx-4 text-white"> | </span>
 );
 
 export default NavigationBarDivider;

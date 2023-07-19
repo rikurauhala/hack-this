@@ -10,16 +10,14 @@ const NavigationBarLink = ({ to, text }: NavigationBarLinkProps): JSX.Element =>
 
   if (currentPage === to) {
     return (
-      <span>
-        <u className="text-white">
-          {text}
-        </u>
+      <span className="text-white font-semibold">
+        {text}
       </span>
     );
   }
 
   return (
-    <Link className="text-white hover:text-gray-400" to={to}>
+    <Link className="text-white hover:text-gray-300" to={to}>
       {text}
     </Link>
   );

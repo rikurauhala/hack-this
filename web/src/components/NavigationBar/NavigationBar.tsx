@@ -28,26 +28,26 @@ const NavigationBar = (): JSX.Element => {
   }, [location.pathname]);
 
   return (
-    <div className="bg-gray-800 py-4">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-white">
-          <NavigationBarDivider character=">" />
-          <NavigationBarLink text={textHome} to="/" />
-          <NavigationBarDivider character="|" />
-          {user
-            ? (
-              <>
-                <NavigationBarLink text={textLogOut} to="/logout" />
-                <span className="text-gray-300"> (logged in as <b>{user}</b>)</span>
-              </>
-            ) : (
-              <>
-                <NavigationBarLink text={textLogIn} to="/login" />
-                <NavigationBarDivider character="|" />
-                <NavigationBarLink text={textRegister} to="/register" />
-              </>
-            )}
-        </div>
+    <div className="bg-blue-800 py-4 flex justify-between items-center">
+      <div className="ml-4">
+        <NavigationBarLink text={textHome} to="/" />
+        <NavigationBarDivider />
+        {user
+          ? (
+            <>
+              <NavigationBarLink text={textLogOut} to="/logout" />
+              <span className="text-gray-400"> (logged in as <b>{user}</b>)</span>
+            </>
+          ) : (
+            <>
+              <NavigationBarLink text={textLogIn} to="/login" />
+              <NavigationBarDivider />
+              <NavigationBarLink text={textRegister} to="/register" />
+            </>
+          )}
+      </div>
+      <div className="mr-4 text-white text-lg font-semibold">
+        Hack This
       </div>
     </div>
   );
