@@ -36,6 +36,13 @@ A lesson on web application security
 
 Follow the instructions to set up the project.
 
+### Prerequisites
+
+- `node` v18.7.0 or higher
+- `npm` verison 9.8.0 or higher
+- `sqlite3` should be installed
+- `linux` is recommended
+
 ### Source code
 
 To install the application, start by downloading the source code from the [project repository](https://github.com/rikurauhala/hack-this). You may use your [preferred method](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) but for this example I am using the `git clone` command using ssh.
