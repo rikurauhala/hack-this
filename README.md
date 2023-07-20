@@ -38,8 +38,8 @@ Follow the instructions to set up the project.
 
 ### Prerequisites
 
-- `node` v18.7.0 or higher
-- `npm` verison 9.8.0 or higher
+- `node` version 18.7.0 or higher
+- `npm` version 9.8.0 or higher
 - `sqlite3` should be installed
 - `linux` is recommended
 
