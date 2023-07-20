@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import Router from 'express-promise-router';
 import { db } from '../db';
@@ -19,9 +18,7 @@ registerRouter.post('/', async (request: Request, response: Response) => {
       response.status(400).json({ message: passwordValid.errorMessage });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    await db.registerUser(username, hashedPassword);
+    await db.registerUser(username, password);
     console.log('Registration successful');
     response.status(201).json({ message: 'Registration successful' });
   } catch (error) {
