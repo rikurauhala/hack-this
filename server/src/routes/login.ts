@@ -13,7 +13,6 @@ loginRouter.post('/', async (request: Request, response: Response) => {
     const password = request.body.password as string;
 
     const user: User | null = await db.getUser(username, password);
-    console.log(user);
 
     if (!user) {
       return response.status(401).json({ message: 'Invalid username or password' });
