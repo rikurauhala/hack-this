@@ -36,7 +36,7 @@ const NavigationBar = (): JSX.Element => {
           ? (
             <>
               <NavigationBarLink text={textLogOut} to="/logout" />
-              <span className="text-gray-400"> (logged in as <b>{user}</b>)</span>
+              <span className="text-gray-300"> (logged in as <b>{user}</b>)</span>
             </>
           ) : (
             <>
