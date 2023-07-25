@@ -44,7 +44,27 @@ Follow the instructions to set up the project.
 - `linux` is recommended
 - `git` is recommended
 
-### Source code
+### Installation script
+
+A script has been written to automate the installation process. Install the application by running the script or follow the instructions below for a manual installation.
+
+```bash
+# Move to a directory where you wish to install the application
+$ cd Downloads
+
+# Get the script
+$ wget https://raw.githubusercontent.com/rikurauhala/hack-this/main/scripts/install.sh
+
+# Make it executable
+$ chmod +x install.sh
+
+# Run the script
+$ ./install.sh
+```
+
+### Manual installation
+
+#### Source code
 
 To install the application, start by downloading the source code from the [project repository](https://github.com/rikurauhala/hack-this). You may use your [preferred method](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) but for this example I am using the `git clone` command using ssh.
 
@@ -61,7 +81,7 @@ $ git clone git@github.com:rikurauhala/hack-this.git
 $ cd ./hack-this
 ```
 
-### Backend
+#### Backend
 
 The repository contains the source code of both the frontend and the backend. Let's set up the backend first.
 
@@ -86,7 +106,7 @@ $ echo DATABASE_URL="path to your database file" >> .env
 $ echo SECRET="a random string" >> .env
 ```
 
-### Frontend
+#### Frontend
 
 Now let's install the frontend.
 
