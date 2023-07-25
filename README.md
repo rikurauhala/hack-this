@@ -91,7 +91,7 @@ Now let's install the frontend.
 
 ```bash
 # Change directory into the frontend folder
-$ cd ../frontend
+$ cd ../web
 
 # Install dependencies
 $ npm install
