@@ -42,6 +42,7 @@ Follow the instructions to set up the project.
 - `npm` version 9.8.0 or higher
 - `sqlite3` should be installed
 - `linux` is recommended
+- `git` is recommended
 
 ### Source code
 
