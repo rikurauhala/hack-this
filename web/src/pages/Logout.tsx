@@ -18,7 +18,7 @@ const Logout = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-4">
+    <div className="container py-4">
       <PageTitle text="Logout" />
       <StatusMessage
         message={'Logging out... see you!'}

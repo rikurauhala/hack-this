@@ -55,7 +55,7 @@ const Login = (): JSX.Element => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-4">
+    <div className="container py-4">
       <PageTitle text="Login" />
       <LoginForm
         handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {

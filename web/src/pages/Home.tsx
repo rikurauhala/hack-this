@@ -1,7 +1,7 @@
 import PageTitle from '../components/common/PageTitle';
 
 const Home = (): JSX.Element => (
-  <div className="container mx-auto px-4 py-4">
+  <div className="container py-4">
     <PageTitle text="Home" />
     <p className="mb-4">
       Welcome to the <b className="text-blue-600">Hack This</b> web application security demo.
