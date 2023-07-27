@@ -1,44 +1,29 @@
-import React, { useState } from 'react';
+import { FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PageTitle from '../components/common/PageTitle';
-import StatusMessage, { Status } from '../components/common/StatusMessage';
 import LoginForm from '../components/login/LoginForm';
 import { login } from '../services/login';
+import { setStatus } from '../store/actions';
 
 const Login = (): JSX.Element => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
-  const [loginStatus, setLoginStatus] = useState<Status>(null);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const clearStatusMessage = () => {
-    const TIMEOUT_MS = 5000;
-    setTimeout(() => {
-      setMessage('');
-      setLoginStatus(null);
-    }, TIMEOUT_MS);
-  };
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       const user = await login(username, password);
       window.localStorage.setItem('user', JSON.stringify(user.data));
-      setMessage('Login successful');
-      setLoginStatus('SUCCESS');
-      clearStatusMessage();
+      dispatch(setStatus('Login successful', 'SUCCESS'));
       setUsername('');
       setPassword('');
-      setTimeout(() => {
-        return navigate('/');
-      }, 2000);
+      return navigate('/');
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setMessage(error.message);
-        setLoginStatus('ERROR');
-        clearStatusMessage();
+        dispatch(setStatus(error.message, 'ERROR'));
         console.error('Error during login:', error.message);
       } else {
         console.error('Error during login:', String(error));
@@ -66,10 +51,6 @@ const Login = (): JSX.Element => {
         setPassword={handlePasswordChange}
         setUsername={handleUsernameChange}
         username={username}
-      />
-      <StatusMessage
-        message={message}
-        status={loginStatus}
       />
     </div>
   );

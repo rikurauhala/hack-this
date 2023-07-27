@@ -1,9 +1,12 @@
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import StatusMessage from './components/common/StatusMessage';
 import NavigationBar from './components/NavigationBar';
 import AppRoutes from './routes';
+import store from './store';
 
-const App = (): JSX.Element => {
-  return (
+const App = (): JSX.Element => (
+  <Provider store={store}>
     <BrowserRouter>
       <div className="flex justify-center min-h-screen bg-gray-50">
         <div className="w-full bg-gradient-to-b from-gray-200 to-slate-100">
@@ -13,8 +16,9 @@ const App = (): JSX.Element => {
           </div>
         </div>
       </div>
+      <StatusMessage />
     </BrowserRouter>
-  );
-};
+  </Provider>
+);
 
 export default App;

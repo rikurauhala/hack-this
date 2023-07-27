@@ -1,37 +1,25 @@
-import React, { useState } from 'react';
-import StatusMessage, { Status } from '../components/common/StatusMessage';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import PageTitle from '../components/common/PageTitle';
 import RegistrationForm from '../components/registration/RegistrationForm';
 import { registerUser } from '../services/register';
-import PageTitle from '../components/common/PageTitle';
+import { setStatus } from '../store/actions';
 
 const Register = (): JSX.Element => {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
-  const [registrationStatus, setRegistrationStatus] = useState<Status>(null);
-
-  const clearStatusMessage = () => {
-    const TIMEOUT_MS = 5000;
-    setTimeout(() => {
-      setMessage('');
-      setRegistrationStatus(null);
-    }, TIMEOUT_MS);
-  };
+  const [username, setUsername] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await registerUser(username, password);
-      setMessage('Registration successful');
-      setRegistrationStatus('SUCCESS');
-      clearStatusMessage();
+      dispatch(setStatus('Registration successful', 'SUCCESS'));
       setUsername('');
       setPassword('');
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setMessage(error.message);
-        setRegistrationStatus('ERROR');
-        clearStatusMessage();
+        dispatch(setStatus(error.message, 'ERROR'));
         console.error('Error during registration:', error.message);
       } else {
         console.error('Error during registration:', String(error));
@@ -59,10 +47,6 @@ const Register = (): JSX.Element => {
         setPassword={handlePasswordChange}
         setUsername={handleUsernameChange}
         username={username}
-      />
-      <StatusMessage
-        message={message}
-        status={registrationStatus}
       />
     </div>
   );
