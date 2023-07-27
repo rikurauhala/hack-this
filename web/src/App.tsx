@@ -8,8 +8,8 @@ import store from './store';
 const App = (): JSX.Element => (
   <Provider store={store}>
     <BrowserRouter>
-      <div className="flex justify-center min-h-screen bg-gray-50">
-        <div className="w-full bg-gradient-to-b from-gray-200 to-slate-100">
+      <div className="flex justify-center min-h-screen bg-gray-950">
+        <div className="w-full bg-gradient-to-b from-gray-950 to-slate-950">
           <NavigationBar />
           <div className="container max-w-screen-md mx-auto px-6">
             <AppRoutes />

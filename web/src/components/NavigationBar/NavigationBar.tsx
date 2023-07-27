@@ -28,7 +28,7 @@ const NavigationBar = (): JSX.Element => {
   }, [location.pathname]);
 
   return (
-    <div className="py-4 bg-gradient-to-r from-indigo-500 to-sky-500">
+    <div className="py-4 bg-gradient-to-r from-indigo-600 to-sky-600">
       <div className="container mx-auto max-w-screen-md px-6 flex justify-between items-center">
         <div>
           <NavigationBarLink text={textHome} to="/" />
@@ -47,7 +47,7 @@ const NavigationBar = (): JSX.Element => {
               </>
             )}
         </div>
-        <div className="text-white text-lg font-semibold">
+        <div className="text-neutral-50 text-lg font-semibold">
           Hack This
         </div>
       </div>

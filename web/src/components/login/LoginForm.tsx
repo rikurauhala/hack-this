@@ -14,7 +14,7 @@ const LoginForm = (props: LoginFormProps): JSX.Element => (
   <Form
     buttonText="Login"
     handleSubmit={props.handleSubmit}
-    icon={<KeyIcon className="w-20 h-20 text-blue-600" />}
+    icon={<KeyIcon className="w-20 h-20 text-blue-400" />}
     password={props.password}
     setPassword={props.setPassword}
     setUsername={props.setUsername}
