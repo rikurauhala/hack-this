@@ -25,10 +25,17 @@ const StatusMessage = (): JSX.Element => {
     return status === 'SUCCESS' ? 'bg-green-500' : 'bg-red-500';
   };
 
+  const handleClick = () => {
+    dispatch(clearStatus());
+  };
+
   if (!message) return <></>;
 
   return (
-    <div className={`fixed bottom-4 right-4 py-2 px-4 text-white rounded-md ${getColorClass()} shadow-md fade-out`}>
+    <div
+      className={`fixed bottom-4 right-4 py-2 px-4 text-white rounded-md ${getColorClass()} shadow-md fade-out`}
+      onClick={handleClick}
+    >
       {message}
     </div>
   );
