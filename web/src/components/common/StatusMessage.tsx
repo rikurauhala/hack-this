@@ -22,7 +22,7 @@ const StatusMessage = (): JSX.Element => {
   }, [message, status, dispatch]);
 
   const getColorClass = () => {
-    return status === 'SUCCESS' ? 'bg-green-500' : 'bg-red-500';
+    return status === 'SUCCESS' ? 'bg-green-600' : 'bg-red-600';
   };
 
   const handleClick = () => {
@@ -33,7 +33,7 @@ const StatusMessage = (): JSX.Element => {
 
   return (
     <div
-      className={`fixed bottom-4 right-4 py-2 px-4 text-black rounded-md ${getColorClass()} shadow-md fade-out`}
+      className={`fixed bottom-4 right-4 py-2 px-4 text-neutral-50 rounded-md ${getColorClass()} shadow-md fade-out`}
       onClick={handleClick}
     >
       {message}
