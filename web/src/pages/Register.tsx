@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PageTitle from '../components/common/PageTitle';
 import RegistrationForm from '../components/registration/RegistrationForm';
 import { registerUser } from '../services/register';
@@ -9,6 +10,7 @@ const Register = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,6 +19,7 @@ const Register = (): JSX.Element => {
       dispatch(setStatus('Registration successful', 'SUCCESS'));
       setUsername('');
       setPassword('');
+      return navigate('/login');
     } catch (error: unknown) {
       if (error instanceof Error) {
         dispatch(setStatus(error.message, 'ERROR'));
