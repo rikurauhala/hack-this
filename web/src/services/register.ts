@@ -7,7 +7,6 @@ interface RegisterResponse {
 export const registerUser = async (username: string, password: string): Promise<AxiosResponse<RegisterResponse>> => {
   try {
     const response: AxiosResponse<RegisterResponse> = await axios.post('/api/register', { username, password });
-    console.log('Registration successful:', response.data.message);
     return response;
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {

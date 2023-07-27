@@ -9,7 +9,6 @@ interface LoginResponse {
 export const login = async (username: string, password: string): Promise<AxiosResponse<LoginResponse>> => {
   try {
     const response: AxiosResponse<LoginResponse> = await axios.post('/api/login', { username, password });
-    console.log('Login successful. Logged in as', response.data.username);
     return response;
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
