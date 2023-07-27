@@ -1,3 +1,4 @@
+import { UserPlusIcon } from '@heroicons/react/24/outline';
 import { FormEvent } from 'react';
 import Form from '../common/Form';
 
@@ -13,6 +14,7 @@ const RegistrationForm = (props: RegistrationFormProps): JSX.Element => (
   <Form
     buttonText="Register"
     handleSubmit={props.handleSubmit}
+    icon={<UserPlusIcon className="w-20 h-20 text-blue-600" />}
     password={props.password}
     setPassword={props.setPassword}
     setUsername={props.setUsername}

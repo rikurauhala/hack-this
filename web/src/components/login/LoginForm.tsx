@@ -1,3 +1,4 @@
+import { KeyIcon } from '@heroicons/react/24/outline';
 import { FormEvent } from 'react';
 import Form from '../common/Form';
 
@@ -13,6 +14,7 @@ const LoginForm = (props: LoginFormProps): JSX.Element => (
   <Form
     buttonText="Login"
     handleSubmit={props.handleSubmit}
+    icon={<KeyIcon className="w-20 h-20 text-blue-600" />}
     password={props.password}
     setPassword={props.setPassword}
     setUsername={props.setUsername}

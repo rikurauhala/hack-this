@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-import { FormEvent } from 'react';
-import { UserCircleIcon } from '@heroicons/react/24/solid';
+import { FormEvent, ReactNode } from 'react';
 
 interface FormProps {
   buttonText: string;
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  icon: ReactNode;
   password: string;
   setPassword: (newPassword: string) => void;
   setUsername: (newUsername: string) => void;
@@ -12,12 +12,12 @@ interface FormProps {
 }
 
 const Form = (props: FormProps): JSX.Element => {
-  const { buttonText, handleSubmit, password, setPassword, setUsername, username } = props;
+  const { buttonText, handleSubmit, icon, password, setPassword, setUsername, username } = props;
 
   return (
     <form className="w-96 mx-auto mt-8 p-4 bg-white rounded-lg shadow-md" onSubmit={(event) => handleSubmit(event)}>
       <div className="mb-4 flex justify-center">
-        <UserCircleIcon className="w-20 h-20 text-blue-600" />
+        {icon}
       </div>
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-950" htmlFor="username">Username</label>
