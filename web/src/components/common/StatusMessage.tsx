@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearStatus, setStatus } from '../../store/actions';
 import { State } from '../../store';
+import './StatusMessage.css';
 
 export type Status = 'SUCCESS' | 'ERROR' | null;
 
@@ -27,7 +28,7 @@ const StatusMessage = (): JSX.Element => {
   if (!message) return <></>;
 
   return (
-    <div className={`fixed bottom-4 right-4 py-2 px-4 text-white rounded-md ${getColorClass()} shadow-md`}>
+    <div className={`fixed bottom-4 right-4 py-2 px-4 text-white rounded-md ${getColorClass()} shadow-md fade-out`}>
       {message}
     </div>
   );
