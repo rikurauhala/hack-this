@@ -17,7 +17,7 @@ const Login = (): JSX.Element => {
     try {
       const user = await login(username, password);
       window.localStorage.setItem('user', JSON.stringify(user.data));
-      dispatch(setStatus('Login successful', 'SUCCESS'));
+      dispatch(setStatus(`Welcome, ${username}!`, 'SUCCESS'));
       setUsername('');
       setPassword('');
       return navigate('/');
