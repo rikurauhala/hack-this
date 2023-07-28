@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import NavigationBarDivider from './NavigationBarDivider';
 import NavigationBarLink from './NavigationBarLink';
+import NavigationBarIcon from './NavigationBarIcon';
 
 interface User {
   token: string;
@@ -30,22 +31,18 @@ const NavigationBar = (): JSX.Element => {
   return (
     <div className="py-4 bg-gradient-to-r from-indigo-600 to-sky-600">
       <div className="container mx-auto max-w-screen-md px-6 flex justify-between items-center">
-        <div>
-          <NavigationBarLink text={textHome} to="/" />
+        <div className="flex items-center">
+          <NavigationBarLink icon={<NavigationBarIcon page="home" />} text={textHome} to="/" />
           <NavigationBarDivider />
-          {user
-            ? (
-              <>
-                <NavigationBarLink text={textLogOut} to="/logout" />
-                <span className="text-gray-300"> (logged in as <b>{user}</b>)</span>
-              </>
-            ) : (
-              <>
-                <NavigationBarLink text={textLogIn} to="/login" />
-                <NavigationBarDivider />
-                <NavigationBarLink text={textRegister} to="/register" />
-              </>
-            )}
+          {user ? (
+            <NavigationBarLink icon={<NavigationBarIcon page="logout" />} text={textLogOut} to="/logout" />
+          ) : (
+            <>
+              <NavigationBarLink icon={<NavigationBarIcon page="login" />} text={textLogIn} to="/login" />
+              <NavigationBarDivider />
+              <NavigationBarLink icon={<NavigationBarIcon page="register" />} text={textRegister} to="/register" />
+            </>
+          )}
         </div>
         <div className="text-neutral-50 text-lg font-semibold">
           Hack This
