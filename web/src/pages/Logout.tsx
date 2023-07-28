@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import PageTitle from '../components/common/PageTitle';
+import Title from '../components/common/Title';
 import { setStatus } from '../store/actions';
 
 const Logout = (): JSX.Element => {
@@ -20,7 +20,7 @@ const Logout = (): JSX.Element => {
 
   return (
     <div className="container py-4">
-      <PageTitle text="Logout" />
+      <Title text="Logout" />
     </div>
   );
 };

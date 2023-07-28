@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import PageTitle from '../components/common/PageTitle';
+import Title from '../components/common/Title';
 import LoginForm from '../components/login/LoginForm';
 import { login } from '../services/login';
 import { setStatus } from '../store/actions';
@@ -41,7 +41,7 @@ const Login = (): JSX.Element => {
 
   return (
     <div className="container py-4">
-      <PageTitle text="Login" />
+      <Title text="Login" />
       <LoginForm
         handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();

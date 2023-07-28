@@ -1,9 +1,9 @@
-import PageTitle from '../components/common/PageTitle';
+import Title from '../components/common/Title';
 import Paragraph from '../components/common/Paragraph';
 
 const Home = (): JSX.Element => (
   <div className="container py-4">
-    <PageTitle text="Home" />
+    <Title text="Home" />
     <Paragraph text={'Welcome to the Hack This web application security demo.'} />
     <Paragraph
       text={`
