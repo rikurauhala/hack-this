@@ -11,15 +11,17 @@ interface NavigationBarIconProps {
 }
 
 const NavigationBarIcon = ({ page }: NavigationBarIconProps): JSX.Element => {
+  const style = 'h-5 w-5';
+
   switch (page) {
     case 'home':
-      return <HomeIcon className="h-5 w-5" />;
+      return <HomeIcon className={style} />;
     case 'login':
-      return <ArrowLeftOnRectangleIcon className="h-5 w-5" />;
+      return <ArrowLeftOnRectangleIcon className={style} />;
     case 'logout':
-      return <ArrowRightOnRectangleIcon className="h-5 w-5" />;
+      return <ArrowRightOnRectangleIcon className={style} />;
     case 'register':
-      return <UserPlusIcon className="h-5 w-5" />;
+      return <UserPlusIcon className={style} />;
     default:
       return <></>;
   }
