@@ -1,4 +1,4 @@
-<div style="text-align: center; margin-bottom: 10px">
+<div align="center">
   <img
     height="100px"
     src="docs/img/logo.png"
@@ -6,12 +6,14 @@
   />
 </div>
 
-<h1 style="text-align: center">
+<h1 align="center">
   💻 Hack This
 </h1>
 
-<div style="text-align: center; margin-bottom: 20px">
+<div align="center">
+
   A lesson on web application security
+
 </div>
 
 <div align="center">
