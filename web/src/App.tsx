@@ -10,7 +10,7 @@ const App = (): JSX.Element => (
   <Provider store={store}>
     <BrowserRouter>
       <div className="flex flex-col min-h-screen bg-gray-950 wrapper">
-        <div className="flex-grow bg-gradient-to-b from-gray-950 to-slate-950 content">
+        <div className="flex-grow bg-gradient-to-b from-gray-950 to-slate-900 content">
           <NavigationBar />
           <Content />
         </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Title from '../components/common/Title';
+import Paragraph from '../components/common/Paragraph';
 import RegistrationForm from '../components/registration/RegistrationForm';
 import { registerUser } from '../services/register';
 import { setStatus } from '../store/actions';
@@ -41,6 +42,7 @@ const Register = (): JSX.Element => {
   return (
     <div className="container py-4">
       <Title text="Register" />
+      <Paragraph text="Start by creating a new account."/>
       <RegistrationForm
         handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();
