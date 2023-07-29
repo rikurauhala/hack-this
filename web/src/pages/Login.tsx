@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Paragraph from '../components/common/Paragraph';
 import Title from '../components/common/Title';
-import LoginForm from '../components/login/LoginForm';
+import LoginForm from '../components/LoginForm';
 import { login } from '../services/login';
 import { setStatus } from '../store/actions';
 

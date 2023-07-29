@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Title from '../components/common/Title';
 import Paragraph from '../components/common/Paragraph';
-import RegistrationForm from '../components/registration/RegistrationForm';
+import RegistrationForm from '../components/RegistrationForm';
 import { registerUser } from '../services/register';
 import { setStatus } from '../store/actions';
 
