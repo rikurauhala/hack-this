@@ -1,7 +1,7 @@
 import { FormEvent, ReactNode } from 'react';
 import FormButton from './FormButton';
-import FormIcon from './FormIcon';
 import FormInput from './FormInput';
+import FormIcon from './FormIcon';
 
 interface FormProps {
   buttonText: string;
@@ -23,7 +23,8 @@ const Form = (props: FormProps): JSX.Element => {
     p-4
     rounded-lg
     shadow-md
-    w-96
+    sm:w-96
+    w-full
   `;
 
   return (

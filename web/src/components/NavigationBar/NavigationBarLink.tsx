@@ -33,7 +33,7 @@ const NavigationBarLink = ({ to, text, icon }: NavigationBarLinkProps): JSX.Elem
     return (
       <div className={styleLinkDisabled}>
         {icon}
-        <span className={styleLinkText}>{text}</span>
+        <span className={`${styleLinkText} hidden sm:flex`}>{text}</span>
       </div>
     );
   }
@@ -41,7 +41,7 @@ const NavigationBarLink = ({ to, text, icon }: NavigationBarLinkProps): JSX.Elem
   return (
     <Link className={styleLink} to={to}>
       {icon}
-      <span className={styleLinkText}>{text}</span>
+      <span className={`${styleLinkText} hidden sm:flex`}>{text}</span>
     </Link>
   );
 };
