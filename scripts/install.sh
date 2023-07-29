@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # Get the source code
-git clone git@github.com:rikurauhala/hack-this.git
+echo "Cloning source code..."
+git clone git@github.com:rikurauhala/hack-this.git &>/dev/null
+echo "Source code cloned"
 
 # Install backend
 echo "Installing backend..."
 cd ./hack-this/server
-npm install
+npm install &>/dev/null
 echo "Backend installed"
 
 # Initialize the database
@@ -28,7 +30,7 @@ echo SECRET=$random_string >> .env
 # Install frontend
 echo "Installing frontend..."
 cd ../web
-npm install
+npm install &>/dev/null
 echo "Frontend installed"
 
 # Run the application or finish installation
