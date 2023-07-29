@@ -1,9 +1,17 @@
-<h1 align="center">💻 Hack This</h1>
+<div style="text-align: center; margin-bottom: 10px">
+  <img
+    height="100px"
+    src="docs/img/logo.png"
+    width="100px"
+  />
+</div>
 
-<div align="center">
+<h1 style="text-align: center">
+  💻 Hack This
+</h1>
 
-A lesson on web application security
-
+<div style="text-align: center; margin-bottom: 20px">
+  A lesson on web application security
 </div>
 
 <div align="center">
