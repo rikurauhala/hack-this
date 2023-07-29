@@ -1,7 +1,16 @@
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS messages;
 
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
   username TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL
+);
+
+CREATE TABLE messages (
+  id INTEGER PRIMARY KEY,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  user_id INTEGER,
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );

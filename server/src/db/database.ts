@@ -1,5 +1,5 @@
 import sqlite3 from 'sqlite3';
-import { User } from '../types';
+import { Message, User } from '../types';
 
 class Database {
   private db: sqlite3.Database;
@@ -42,6 +42,50 @@ class Database {
             reject(error);
           } else {
             resolve();
+          }
+        }
+      );
+    });
+  }
+
+  public insertMessage(message: string, createdAt: string, userId: string): Promise<Message> {
+    return new Promise<Message>((resolve, reject) => {
+      this.db.run(
+        'INSERT INTO messages (message, created_at, user_id) VALUES (?, ?, ?)',
+        [message, createdAt, userId],
+        (error: Error | null) => {
+          if (error) {
+            reject(error);
+          } else {
+            this.db.get(
+              'SELECT * FROM messages WHERE id = (SELECT MAX(id) FROM messages) LIMIT 1',
+              (error: Error | null, row: Message) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(row);
+                }
+              }
+            );
+          }
+        }
+      );
+    });
+  }
+
+  public getAllMessages(): Promise<Message[] | null> {
+    return new Promise<Message[] | null>((resolve, reject) => {
+      this.db.all(
+        'SELECT * FROM messages',
+        (error: Error | null, rows: Message[]) => {
+          if (error) {
+            reject(error);
+          } else {
+            if (rows.length > 0) {
+              resolve(rows);
+            } else {
+              resolve(null);
+            }
           }
         }
       );

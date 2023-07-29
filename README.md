@@ -7,7 +7,7 @@
 </div>
 
 <h1 align="center">
-  💻 Hack This
+  Hack This
 </h1>
 
 <div align="center">
