@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearStatus, setStatus } from '../../store/actions';
 import { State } from '../../store';
+import { colorFailure, colorSuccess } from '../../theme';
 import './StatusMessage.css';
 
 export type Status = 'SUCCESS' | 'ERROR' | null;
@@ -21,21 +22,31 @@ const StatusMessage = (): JSX.Element => {
     }
   }, [message, status, dispatch]);
 
-  const getColorClass = () => {
-    return status === 'SUCCESS' ? 'bg-green-600' : 'bg-red-600';
+  const getColorClass = (): string => {
+    return status === 'SUCCESS' ? colorSuccess : colorFailure;
   };
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     dispatch(clearStatus());
   };
 
   if (!message) return <></>;
 
+  const style = `
+    ${getColorClass()}
+    bottom-4
+    fade-out
+    fixed
+    py-2
+    px-4 
+    right-4
+    rounded-md
+    shadow-md
+    text-neutral-50
+  `;
+
   return (
-    <div
-      className={`fixed bottom-4 right-4 py-2 px-4 text-neutral-50 rounded-md ${getColorClass()} shadow-md fade-out`}
-      onClick={handleClick}
-    >
+    <div className={style} onClick={handleClick}>
       {message}
     </div>
   );

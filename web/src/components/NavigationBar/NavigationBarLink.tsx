@@ -10,19 +10,37 @@ interface NavigationBarLinkProps {
 const NavigationBarLink = ({ to, text, icon }: NavigationBarLinkProps): JSX.Element => {
   const currentPage = useLocation().pathname;
 
+  const styleLink = `
+    flex
+    hover:text-gray-300
+    items-center
+    text-neutral-50
+  `;
+
+  const styleLinkDisabled = `
+    flex
+    font-semibold
+    items-center
+    text-neutral-50
+  `;
+
+  const styleLinkText = `
+    ml-2
+  `;
+
   if (currentPage === to) {
     return (
-      <div className="text-neutral-50 font-semibold flex items-center">
+      <div className={styleLinkDisabled}>
         {icon}
-        <span className="ml-2">{text}</span>
+        <span className={styleLinkText}>{text}</span>
       </div>
     );
   }
 
   return (
-    <Link className="text-neutral-50 hover:text-gray-300 flex items-center" to={to}>
+    <Link className={styleLink} to={to}>
       {icon}
-      <span className="ml-2">{text}</span>
+      <span className={styleLinkText}>{text}</span>
     </Link>
   );
 };

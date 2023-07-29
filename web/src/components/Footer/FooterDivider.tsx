@@ -1,5 +1,13 @@
-const FooterDivider = (): JSX.Element => (
-  <span className="mx-3">·</span>
-);
+const FooterDivider = (): JSX.Element => {
+  const style = `
+    mx-3
+  `;
+
+  return (
+    <span className={style}>
+      ·
+    </span>
+  );
+};
 
 export default FooterDivider;

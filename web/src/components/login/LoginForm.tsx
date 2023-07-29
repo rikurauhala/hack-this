@@ -10,16 +10,24 @@ interface LoginFormProps {
   username: string;
 }
 
-const LoginForm = (props: LoginFormProps): JSX.Element => (
-  <Form
-    buttonText="Login"
-    handleSubmit={props.handleSubmit}
-    icon={<KeyIcon className="w-20 h-20 text-blue-400" />}
-    password={props.password}
-    setPassword={props.setPassword}
-    setUsername={props.setUsername}
-    username={props.username}
-  />
-);
+const LoginForm = (props: LoginFormProps): JSX.Element => {
+  const styleIcon = `
+    h-20
+    text-blue-400
+    w-20
+  `;
+
+  return (
+    <Form
+      buttonText="Login"
+      handleSubmit={props.handleSubmit}
+      icon={<KeyIcon className={styleIcon} />}
+      password={props.password}
+      setPassword={props.setPassword}
+      setUsername={props.setUsername}
+      username={props.username}
+    />
+  );
+};
 
 export default LoginForm;

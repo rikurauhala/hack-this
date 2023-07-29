@@ -11,7 +11,10 @@ interface NavigationBarIconProps {
 }
 
 const NavigationBarIcon = ({ page }: NavigationBarIconProps): JSX.Element => {
-  const style = 'h-5 w-5';
+  const style = `
+    h-5
+    w-5
+  `;
 
   switch (page) {
     case 'home':

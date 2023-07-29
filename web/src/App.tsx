@@ -6,19 +6,35 @@ import NavigationBar from './components/NavigationBar';
 import Content from './components/Content';
 import store from './store';
 
-const App = (): JSX.Element => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-gray-950 wrapper">
-        <div className="flex-grow bg-gradient-to-b from-gray-950 to-slate-900 content">
-          <NavigationBar />
-          <Content />
+const App = (): JSX.Element => {
+  const styleContent = `
+    bg-gradient-to-b
+    from-gray-950
+    flex-grow
+    to-slate-900
+  `;
+
+  const styleWrapper = `
+    bg-gray-950
+    flex
+    flex-col
+    min-h-screen
+  `;
+
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className={styleWrapper}>
+          <div className={styleContent}>
+            <NavigationBar />
+            <Content />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-      <StatusMessage />
-    </BrowserRouter>
-  </Provider>
-);
+        <StatusMessage />
+      </BrowserRouter>
+    </Provider>
+  );
+};
 
 export default App;

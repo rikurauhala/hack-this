@@ -10,16 +10,24 @@ interface RegistrationFormProps {
   username: string;
 }
 
-const RegistrationForm = (props: RegistrationFormProps): JSX.Element => (
-  <Form
-    buttonText="Register"
-    handleSubmit={props.handleSubmit}
-    icon={<UserPlusIcon className="w-20 h-20 text-blue-400" />}
-    password={props.password}
-    setPassword={props.setPassword}
-    setUsername={props.setUsername}
-    username={props.username}
-  />
-);
+const RegistrationForm = (props: RegistrationFormProps): JSX.Element => {
+  const styleIcon = `
+    h-20
+    text-blue-400
+    w-20
+  `;
+
+  return (
+    <Form
+      buttonText="Register"
+      handleSubmit={props.handleSubmit}
+      icon={<UserPlusIcon className={styleIcon} />}
+      password={props.password}
+      setPassword={props.setPassword}
+      setUsername={props.setUsername}
+      username={props.username}
+    />
+  );
+};
 
 export default RegistrationForm;
