@@ -1,7 +1,9 @@
+import { colorNavigationBar } from '../../theme';
+
 const NavigationBarLogo = () => {
   const style = `
+    ${colorNavigationBar}
     text-lg
-    text-neutral-50
     font-semibold
   `;
 

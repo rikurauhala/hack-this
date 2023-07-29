@@ -1,3 +1,5 @@
+import { colorFooterLink } from '../../theme';
+
 interface FooterLinkProps {
   text: string;
   to: string;
@@ -5,7 +7,7 @@ interface FooterLinkProps {
 
 const FooterLink = ({ text, to }: FooterLinkProps) => {
   const style = `
-    text-blue-200
+    ${colorFooterLink}
   `;
 
   return (

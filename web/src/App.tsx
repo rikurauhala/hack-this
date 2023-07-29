@@ -5,17 +5,15 @@ import Footer from './components/Footer';
 import NavigationBar from './components/NavigationBar';
 import Content from './components/Content';
 import store from './store';
+import { gradientBackground } from './theme';
 
 const App = (): JSX.Element => {
   const styleContent = `
-    bg-gradient-to-b
-    from-gray-950
+    ${gradientBackground}
     flex-grow
-    to-slate-900
   `;
 
   const styleWrapper = `
-    bg-gray-950
     flex
     flex-col
     min-h-screen

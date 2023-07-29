@@ -4,6 +4,7 @@ import NavigationBarDivider from './NavigationBarDivider';
 import NavigationBarLink from './NavigationBarLink';
 import NavigationBarLogo from './NavigationBarLogo';
 import NavigationBarIcon from './NavigationBarIcon';
+import { gradientNavigationBar } from '../../theme';
 
 interface User {
   token: string;
@@ -25,10 +26,8 @@ const NavigationBar = (): JSX.Element => {
   }, [location.pathname]);
 
   const styleNavigationBar = `
-    bg-gradient-to-r
-    from-indigo-600
+    ${gradientNavigationBar}
     py-4
-    to-sky-600
   `;
 
   const styleContentContainer = `

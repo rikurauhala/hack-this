@@ -1,6 +1,7 @@
 import { KeyIcon } from '@heroicons/react/24/outline';
 import { FormEvent } from 'react';
 import Form from '../common/Form';
+import { colorMain } from '../../theme';
 
 interface LoginFormProps {
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
@@ -10,13 +11,13 @@ interface LoginFormProps {
   username: string;
 }
 
-const LoginForm = (props: LoginFormProps): JSX.Element => {
-  const styleIcon = `
-    h-20
-    text-blue-400
-    w-20
-  `;
+const styleIcon = `
+  ${colorMain}
+  h-20
+  w-20
+`;
 
+const LoginForm = (props: LoginFormProps): JSX.Element => {
   return (
     <Form
       buttonText="Login"

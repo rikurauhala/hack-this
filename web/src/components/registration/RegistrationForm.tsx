@@ -1,6 +1,7 @@
 import { UserPlusIcon } from '@heroicons/react/24/outline';
 import { FormEvent } from 'react';
 import Form from '../common/Form';
+import { colorMain } from '../../theme';
 
 interface RegistrationFormProps {
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
@@ -12,8 +13,8 @@ interface RegistrationFormProps {
 
 const RegistrationForm = (props: RegistrationFormProps): JSX.Element => {
   const styleIcon = `
+    ${colorMain}
     h-20
-    text-blue-400
     w-20
   `;
 

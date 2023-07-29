@@ -1,3 +1,5 @@
+import { colorText } from '../../theme';
+
 interface ParagraphProps {
   text: string;
 }
@@ -5,7 +7,7 @@ interface ParagraphProps {
 const Paragraph = ({ text }: ParagraphProps): JSX.Element => {
   const style = `
     mb-4
-    text-neutral-100
+    ${colorText}
   `;
 
   return (

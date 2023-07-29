@@ -1,3 +1,5 @@
+import { colorFocus, colorText } from '../../../theme';
+
 interface FormInputProps {
   id: string;
   labelText: string;
@@ -8,23 +10,23 @@ interface FormInputProps {
 
 const FormInput = ({ id, labelText, onChange, type, value }: FormInputProps): JSX.Element => {
   const styleLabel = `
+    ${colorText}
     block
     font-medium
-    text-neutral-50
     text-sm
   `;
 
   const styleInput = `
+    ${colorFocus}
+    ${colorText}
     bg-slate-700
     border
     border-slate-700
     focus:outline-none
     focus:ring-1
-    focus:ring-blue-500
     mt-1
     p-2
     rounded-md
-    text-neutral-100
     w-full
   `;
 

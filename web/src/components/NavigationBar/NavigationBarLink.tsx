@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { colorNavigationBar } from '../../theme';
 
 interface NavigationBarLinkProps {
   to: string;
@@ -11,17 +12,17 @@ const NavigationBarLink = ({ to, text, icon }: NavigationBarLinkProps): JSX.Elem
   const currentPage = useLocation().pathname;
 
   const styleLink = `
+    ${colorNavigationBar}
     flex
     hover:text-gray-300
     items-center
-    text-neutral-50
   `;
 
   const styleLinkDisabled = `
+    ${colorNavigationBar}
     flex
     font-semibold
     items-center
-    text-neutral-50
   `;
 
   const styleLinkText = `

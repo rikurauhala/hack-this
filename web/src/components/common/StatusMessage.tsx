@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearStatus, setStatus } from '../../store/actions';
 import { State } from '../../store';
-import { colorFailure, colorSuccess } from '../../theme';
+import { colorFailure, colorSuccess, colorText } from '../../theme';
 import './StatusMessage.css';
 
 export type Status = 'SUCCESS' | 'ERROR' | null;
@@ -34,6 +34,7 @@ const StatusMessage = (): JSX.Element => {
 
   const style = `
     ${getColorClass()}
+    ${colorText}
     bottom-4
     fade-out
     fixed
@@ -42,7 +43,6 @@ const StatusMessage = (): JSX.Element => {
     right-4
     rounded-md
     shadow-md
-    text-neutral-50
   `;
 
   return (

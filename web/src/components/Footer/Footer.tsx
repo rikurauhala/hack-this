@@ -1,12 +1,13 @@
+import { colorText } from '../../theme';
 import FooterDivider from './FooterDivider';
 import FooterLink from './FooterLink';
 
 const Footer = (): JSX.Element => {
   const style = `
+    ${colorText}
     bg-gray-900
     py-4
     text-center
-    text-neutral-200
   `;
 
   return (

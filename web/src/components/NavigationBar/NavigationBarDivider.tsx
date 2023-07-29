@@ -1,7 +1,9 @@
+import { colorNavigationBar } from '../../theme';
+
 const NavigationBarDivider = (): JSX.Element => {
   const style = `
+    ${colorNavigationBar}
     mx-4
-    text-neutral-100
   `;
 
   return (
