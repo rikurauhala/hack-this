@@ -1,8 +1,9 @@
 export interface Message {
-  id: number;
-  created_at: string;
+  createdAt: string;
   message: string;
+  messageId: string;
   username: string;
+  userId: string;
 }
 
 export interface User {

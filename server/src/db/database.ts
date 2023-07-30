@@ -75,7 +75,7 @@ class Database {
 
   public getAllMessages(): Promise<Message[] | null> {
     const query = `
-      SELECT m.id, m.message, m.created_at, u.username
+      SELECT m.message, m.id as messageId, m.created_at as createdAt, u.username, u.id as userId
       FROM messages m
       JOIN users u ON m.user_id = u.id
     `;

@@ -22,7 +22,7 @@ const GuestBookMessages = ({ messages }: GuestBookMessagesProps): JSX.Element =>
       <ul>
         {messages.map((message) => (
           <GuestBookMessage
-            key={message.id}
+            key={message.messageId}
             message={message}
           />
         ))}

@@ -8,7 +8,7 @@ interface GuestBookMessageProps {
   message: Message;
 }
 
-const GuestBookMessage = ({ message }: GuestBookMessageProps): JSX.Element => {
+const GuestBookMessage = ({ message, }: GuestBookMessageProps): JSX.Element => {
   const styleMessage = `
     ${colorText}
     mb-2
@@ -16,9 +16,9 @@ const GuestBookMessage = ({ message }: GuestBookMessageProps): JSX.Element => {
 
   return (
     <li className={styleMessage}>
-      <GuestBookMessageTimestamp timestamp={message.created_at} />
+      <GuestBookMessageTimestamp timestamp={message.createdAt} />
       <span> </span>
-      <GuestBookMessageUsername username={message.username} />
+      <GuestBookMessageUsername userId={parseInt(message.userId)} username={message.username} />
       <span>: </span>
       <GuestBookMessageContent message={message.message} />
     </li>
