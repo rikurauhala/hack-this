@@ -54,15 +54,21 @@ const GuestBook = (): JSX.Element => {
   return (
     <div className={styleContainer}>
       <Title text="Guest book" />
-      <Paragraph text="Leave a message for other users to see." />
-      <GuestBookForm
-        handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
-          event.preventDefault();
-          void handleSubmit(event);
-        }}
-        message={message}
-        setMessage={setMessage}
-      />
+      {userId !== null ? (
+        <>
+          <Paragraph text="Leave a message for other users to see." />
+          <GuestBookForm
+            handleSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+              event.preventDefault();
+              void handleSubmit(event);
+            }}
+            message={message}
+            setMessage={setMessage}
+          />
+        </>
+      ) : (
+        <Paragraph text="Log in to send a message." />
+      )}
       <GuestBookMessages messages={messages} />
     </div>
   );
