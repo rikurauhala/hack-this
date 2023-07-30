@@ -74,9 +74,15 @@ class Database {
   }
 
   public getAllMessages(): Promise<Message[] | null> {
+    const query = `
+      SELECT m.id, m.message, m.created_at, u.username
+      FROM messages m
+      JOIN users u ON m.user_id = u.id
+    `;
+
     return new Promise<Message[] | null>((resolve, reject) => {
       this.db.all(
-        'SELECT * FROM messages',
+        query,
         (error: Error | null, rows: Message[]) => {
           if (error) {
             reject(error);
