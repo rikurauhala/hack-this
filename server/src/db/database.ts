@@ -77,7 +77,9 @@ class Database {
     const query = `
       SELECT m.message, m.id as messageId, m.created_at as createdAt, u.username, u.id as userId
       FROM messages m
-      JOIN users u ON m.user_id = u.id
+      JOIN users u
+      ON m.user_id = u.id
+      ORDER BY m.created_at DESC
     `;
 
     return new Promise<Message[] | null>((resolve, reject) => {

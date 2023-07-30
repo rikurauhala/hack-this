@@ -8,7 +8,18 @@ const formatTimestamp = (timestamp: string): string => (
 
 const GuestBookMessageTimestamp = ({ timestamp }: GuestBookMessageTimestampProps): JSX.Element => {
   const formattedTimestamp = formatTimestamp(timestamp);
-  return <span className="text-gray-400">[{formattedTimestamp}]</span>;
+
+  const style = `
+    hidden
+    sm:inline
+    text-gray-400
+  `;
+
+  return (
+    <span className={style}>
+      [{formattedTimestamp}]
+    </span>
+  );
 };
 
 export default GuestBookMessageTimestamp;

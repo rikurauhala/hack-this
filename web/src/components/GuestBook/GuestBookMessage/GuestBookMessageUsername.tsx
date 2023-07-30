@@ -1,9 +1,9 @@
 const colors: string[] = [
-  'text-yellow-400',
-  'text-lime-400',
   'text-orange-400',
   'text-red-400',
   'text-amber-400',
+  'text-yellow-400',
+  'text-lime-400',
   'text-green-400',
   'text-emerald-400',
   'text-teal-400',
