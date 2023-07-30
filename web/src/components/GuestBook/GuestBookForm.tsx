@@ -50,7 +50,14 @@ const GuestBookForm = ({ handleSubmit, message, setMessage }: GuestBookFormProps
           value={message}
         />
       </div>
-      <Button text="Send" />
+      <div className="flex gap-3">
+        <Button
+          onClick={() => setMessage('')}
+          text="Clear"
+          type="reset"
+        />
+        <Button text="Send" />
+      </div>
     </form>
   );
 };
