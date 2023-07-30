@@ -3,6 +3,7 @@ import GuestBook from './GuestBook';
 import Home from './Home';
 import Login from './Login';
 import Logout from './Logout';
+import NotFound from './NotFound';
 import Register from './Register';
 
 const Content = (): JSX.Element => {
@@ -21,6 +22,7 @@ const Content = (): JSX.Element => {
         <Route element={<Login />} path="/login" />
         <Route element={<Logout />} path="/logout" />
         <Route element={<Register />} path="/register" />
+        <Route element={<NotFound />} path="*" />
       </Routes>
     </div>
   );
