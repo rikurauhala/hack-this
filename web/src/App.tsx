@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import StatusMessage from './components/common/StatusMessage';
 import Footer from './components/Footer';
 import NavigationBar from './components/NavigationBar';
-import Content from './components/Content';
+import Content from './pages/Content';
 import store from './store';
 import { gradientBackground } from './theme';
 

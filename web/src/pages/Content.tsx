@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import Logout from '../pages/Logout';
-import Register from '../pages/Register';
+import GuestBook from './GuestBook';
+import Home from './Home';
+import Login from './Login';
+import Logout from './Logout';
+import Register from './Register';
 
 const Content = (): JSX.Element => {
   const style = `
@@ -15,6 +16,7 @@ const Content = (): JSX.Element => {
   return (
     <div className={style}>
       <Routes>
+        <Route element={<GuestBook />} path="/guestbook" />
         <Route element={<Home />} path="/" />
         <Route element={<Login />} path="/login" />
         <Route element={<Logout />} path="/logout" />

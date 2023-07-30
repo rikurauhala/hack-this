@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import {
   ArrowLeftOnRectangleIcon,
   ArrowRightOnRectangleIcon,
+  BookOpenIcon,
   HomeIcon,
   UserPlusIcon
 } from '@heroicons/react/24/outline';
@@ -17,6 +18,8 @@ const NavigationBarIcon = ({ page }: NavigationBarIconProps): JSX.Element => {
   `;
 
   switch (page) {
+    case 'guestbook':
+      return <BookOpenIcon className={style} />;
     case 'home':
       return <HomeIcon className={style} />;
     case 'login':

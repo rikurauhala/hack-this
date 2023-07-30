@@ -1,4 +1,4 @@
-import { colorButtonFocus, colorButtonHover, colorMainBg, colorText } from '../../../theme';
+import { colorButtonFocus, colorButtonHover, colorMainBg, colorText } from '../../theme';
 
 interface FormButtonProps {
   text: string;

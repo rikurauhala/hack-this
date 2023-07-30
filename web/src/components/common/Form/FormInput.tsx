@@ -1,4 +1,4 @@
-import { colorFocus, colorText } from '../../../theme';
+import { colorButtonFocus, colorText } from '../../../theme';
 
 interface FormInputProps {
   id: string;
@@ -17,7 +17,7 @@ const FormInput = ({ id, labelText, onChange, type, value }: FormInputProps): JS
   `;
 
   const styleInput = `
-    ${colorFocus}
+    ${colorButtonFocus}
     ${colorText}
     bg-slate-700
     border

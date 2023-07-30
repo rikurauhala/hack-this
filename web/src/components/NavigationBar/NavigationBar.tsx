@@ -5,11 +5,7 @@ import NavigationBarLink from './NavigationBarLink';
 import NavigationBarLogo from './NavigationBarLogo';
 import NavigationBarIcon from './NavigationBarIcon';
 import { gradientNavigationBar } from '../../theme';
-
-interface User {
-  token: string;
-  username: string;
-}
+import { User } from '../../types';
 
 const NavigationBar = (): JSX.Element => {
   const [user, setUser] = useState<string>('');
@@ -52,7 +48,11 @@ const NavigationBar = (): JSX.Element => {
           <NavigationBarLink icon={<NavigationBarIcon page="home" />} text={'Home'} to="/" />
           <NavigationBarDivider />
           {user ? (
-            <NavigationBarLink icon={<NavigationBarIcon page="logout" />} text={'Log out'} to="/logout" />
+            <>
+              <NavigationBarLink icon={<NavigationBarIcon page="guestbook" />} text={'Guest book'} to="/guestbook" />
+              <NavigationBarDivider />
+              <NavigationBarLink icon={<NavigationBarIcon page="logout" />} text={'Log out'} to="/logout" />
+            </>
           ) : (
             <>
               <NavigationBarLink icon={<NavigationBarIcon page="login" />} text={'Log in'} to="/login" />

@@ -1,7 +1,6 @@
 export const colorButtonFocus = 'focus:ring-blue-600';
-export const colorButtonHover = 'hover:bg-blue-00';
+export const colorButtonHover = 'hover:bg-blue-600';
 export const colorFailure = 'bg-red-600';
-export const colorFocus = 'focus:ring-blue-500';
 export const colorFooterLink = 'text-blue-200';
 export const colorMain = 'text-blue-400';
 export const colorMainBg = 'bg-blue-500';

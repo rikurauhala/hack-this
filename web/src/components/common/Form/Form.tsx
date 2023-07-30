@@ -1,5 +1,5 @@
 import { FormEvent, ReactNode } from 'react';
-import FormButton from './FormButton';
+import Button from '../Button';
 import FormInput from './FormInput';
 import FormIcon from './FormIcon';
 
@@ -44,7 +44,7 @@ const Form = (props: FormProps): JSX.Element => {
         type="password"
         value={password}
       />
-      <FormButton text={buttonText} />
+      <Button text={buttonText} />
     </form>
   );
 };

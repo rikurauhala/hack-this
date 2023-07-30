@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 interface LoginResponse {
+  id: string;
   token: string;
   username: string;
   message?: string;
