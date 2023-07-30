@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Title from '../components/common/Title';
@@ -12,6 +12,8 @@ const Register = (): JSX.Element => {
   const [password, setPassword] = React.useState<string>('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => void (document.title = 'Register | Hack This'), []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

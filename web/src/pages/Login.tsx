@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Paragraph from '../components/common/Paragraph';
@@ -12,6 +12,8 @@ const Login = (): JSX.Element => {
   const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => void (document.title = 'Log in | Hack This'), []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

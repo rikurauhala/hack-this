@@ -12,6 +12,7 @@ const GuestBook = (): JSX.Element => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
+    document.title = 'Guest book | Hack This';
     const userJSON = window.localStorage.getItem('user');
     if (userJSON) {
       const userJson = JSON.parse(userJSON) as User;
