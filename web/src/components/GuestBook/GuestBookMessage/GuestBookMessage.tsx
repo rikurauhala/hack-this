@@ -8,7 +8,7 @@ interface GuestBookMessageProps {
   message: Message;
 }
 
-const GuestBookMessage = ({ message, }: GuestBookMessageProps): JSX.Element => {
+const GuestBookMessage = ({ message }: GuestBookMessageProps): JSX.Element => {
   const styleMessage = `
     ${colorText}
     mb-2
