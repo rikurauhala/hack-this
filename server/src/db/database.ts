@@ -14,6 +14,22 @@ class Database {
     });
   }
 
+  public usernameIsTaken(username: string): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.db.get(
+        'SELECT COUNT(*) as count FROM users WHERE username = ?',
+        username,
+        (error: Error | null, row: { count: number }) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(row.count > 0);
+          }
+        }
+      );
+    });
+  }
+
   public getUser(username: string, password: string): Promise<User | null> {
     return new Promise<User | null>((resolve, reject) => {
       this.db.get(
@@ -35,8 +51,9 @@ class Database {
 
   public registerUser(username: string, password: string) {
     return new Promise<void>((resolve, reject) => {
-      this.db.exec(
-        `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`,
+      this.db.run(
+        'INSERT INTO users (username, password) VALUES (?, ?)',
+        [username, password],
         (error) => {
           if (error) {
             reject(error);

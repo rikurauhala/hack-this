@@ -12,6 +12,9 @@ registerRouter.post('/', async (request: Request, response: Response) => {
     if (!usernameValid.valid) {
       response.status(400).json({ message: usernameValid.errorMessage });
     }
+    if (await db.usernameIsTaken(username)) {
+      response.status(400).json({ message: 'This username is already taken' });
+    }
     const password = request.body.password as string;
     const passwordValid = validatePassword(password);
     if (!passwordValid.valid) {
