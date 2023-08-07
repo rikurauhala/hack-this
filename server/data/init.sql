@@ -16,8 +16,6 @@ CREATE TABLE messages (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-INSERT INTO users (username, password, admin) VALUES ('admin', 'secret', 1);
-
 INSERT INTO users (username, password) VALUES ('John', 'zY6N08h932e78YESLZkg');
 INSERT INTO users (username, password) VALUES ('Alice', 'Wn6769CaaAMrI3waK3KG');
 INSERT INTO users (username, password) VALUES ('Michael', '97Fo90zMrX4UMTqjmTfj');
@@ -33,6 +31,8 @@ INSERT INTO users (username, password) VALUES ('Isabella', '9jUc13EwgtlZe35mK8fs
 INSERT INTO users (username, password) VALUES ('Matthew', 'Ii6751QxTf5bSCTZ8EQM');
 INSERT INTO users (username, password) VALUES ('Laura', 'Dh18fR7bQ0c1xOx3Pctk');
 INSERT INTO users (username, password) VALUES ('Alexander', 'Tl1Bos60NZhgRQoskSUE');
+
+INSERT INTO users (username, password, admin) VALUES ('admin', 'secret', 1);
 
 INSERT INTO messages (message, user_id, created_at) VALUES ('Hello, this is John. Nice site!', 1, '2023-07-01 08:30:00');
 INSERT INTO messages (message, user_id, created_at) VALUES ('Hello, this is Alice. Thanks for having me!', 2, '2023-07-10 15:45:00');
