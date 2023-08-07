@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS messages;
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
   username TEXT NOT NULL UNIQUE,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  admin BOOLEAN DEFAULT 0
 );
 
 CREATE TABLE messages (
@@ -14,6 +15,8 @@ CREATE TABLE messages (
   user_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+INSERT INTO users (username, password, admin) VALUES ('admin', 'secret', 1);
 
 INSERT INTO users (username, password) VALUES ('John', 'zY6N08h932e78YESLZkg');
 INSERT INTO users (username, password) VALUES ('Alice', 'Wn6769CaaAMrI3waK3KG');
