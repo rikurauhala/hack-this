@@ -17,18 +17,16 @@ const styleIcon = `
   w-20
 `;
 
-const LoginForm = (props: LoginFormProps): JSX.Element => {
-  return (
-    <Form
-      buttonText="Login"
-      handleSubmit={props.handleSubmit}
-      icon={<KeyIcon className={styleIcon} />}
-      password={props.password}
-      setPassword={props.setPassword}
-      setUsername={props.setUsername}
-      username={props.username}
-    />
-  );
-};
+const LoginForm = (props: LoginFormProps): JSX.Element => (
+  <Form
+    buttonText="Login"
+    handleSubmit={props.handleSubmit}
+    icon={<KeyIcon className={styleIcon} />}
+    password={props.password}
+    setPassword={props.setPassword}
+    setUsername={props.setUsername}
+    username={props.username}
+  />
+);
 
 export default LoginForm;
