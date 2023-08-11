@@ -30,10 +30,30 @@ class Database {
     });
   }
 
+  public getUserById(id: number): Promise<User | null> {
+    return new Promise<User | null>((resolve, reject) => {
+      this.db.get(
+        `SELECT id, username FROM users WHERE id = ?`,
+        id,
+        (error: Error | null, row: User) => {
+          if (error) {
+            reject(error);
+          } else {
+            if (row) {
+              resolve(row);
+            } else {
+              resolve(null);
+            }
+          }
+        }
+      );
+    });
+  }
+
   public getUser(username: string, password: string): Promise<User | null> {
     return new Promise<User | null>((resolve, reject) => {
       this.db.get(
-        `SELECT id, username, password FROM users WHERE username = '${username}' AND password = '${password}'`,
+        `SELECT id, username FROM users WHERE username = '${username}' AND password = '${password}'`,
         (error: Error | null, row: User) => {
           if (error) {
             reject(error);
