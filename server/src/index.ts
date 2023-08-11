@@ -3,7 +3,7 @@ import express from 'express';
 import path from 'path';
 import mountRoutes from './routes';
 import * as middleware from './utils/middleware';
-import { API_BASE_PATH, PORT } from './utils/config';
+import { PORT } from './utils/config';
 
 const app = express();
 app.use(express.json());
@@ -12,10 +12,6 @@ app.use(middleware.tokenExtractor);
 app.use(middleware.userExtractor);
 
 mountRoutes(app);
-
-app.use(API_BASE_PATH + '*', (_request, response) => {
-  response.send('Not found!');
-});
 
 if (process.env.NODE_ENV === 'production') {
   const staticPath = path.join(__dirname, 'web');
