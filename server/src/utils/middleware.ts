@@ -25,9 +25,6 @@ export const errorHandler = (error: Error, _request: Request, response: Response
   logError(errorMessage);
 
   switch (error.name) {
-    case 'CastError':
-      response.status(400).json({ error: 'Malformatted id' });
-      break;
     case 'ValidationError':
       response.status(400).json({ error: errorMessage });
       break;
