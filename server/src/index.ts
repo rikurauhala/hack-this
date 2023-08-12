@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express from 'express';
+import 'express-async-errors';
 import path from 'path';
 import mountRoutes from './routes';
 import * as middleware from './utils/middleware';
