@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Paragraph from '../components/common/Paragraph';
 import Title from '../components/common/Title';
 import GuestBookForm from '../components/GuestBook/GuestBookForm';
 import GuestBookMessages from '../components/GuestBook/GuestBookMessages';
 import { getAllMessages, sendMessage } from '../services/messages';
+import { setStatus } from '../store/actions';
 import { Message, User } from '../types';
 
 const GuestBook = (): JSX.Element => {
   const [userId, setUserId] = useState<number | null>(null);
   const [message, setMessage] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = 'Guest book | Hack This';
@@ -28,8 +31,13 @@ const GuestBook = (): JSX.Element => {
     try {
       const fetchedMessages = await getAllMessages();
       setMessages(fetchedMessages as Message[]);
-    } catch (error) {
-      console.error('Error fetching messages:', error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        dispatch(setStatus(error.message, 'ERROR'));
+        console.error('Error fetching messages:', error);
+      } else {
+        console.error('Error fetching message:', String(error));
+      }
     }
   };
 
@@ -40,8 +48,13 @@ const GuestBook = (): JSX.Element => {
       await sendMessage(userId, message);
       setMessage('');
       void fetchMessages();
-    } catch (error) {
-      console.error('Error sending message:', error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        dispatch(setStatus(error.message, 'ERROR'));
+        console.error('Error sending message:', error);
+      } else {
+        console.error('Error sending message:', String(error));
+      }
     }
   };
 
