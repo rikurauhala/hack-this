@@ -53,7 +53,7 @@ class Database {
   public getUser(username: string, password: string): Promise<User | null> {
     return new Promise<User | null>((resolve, reject) => {
       this.db.get(
-        `SELECT id, username FROM users WHERE username = '${username}' AND password = '${password}'`,
+        `SELECT id, username, admin FROM users WHERE username = '${username}' AND password = '${password}'`,
         (error: Error | null, row: User) => {
           if (error) {
             reject(error);
