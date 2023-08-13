@@ -23,7 +23,6 @@ const GuestBook = (): JSX.Element => {
     } else {
       setUserId(null);
     }
-
     void fetchMessages();
   }, []);
 
@@ -43,9 +42,14 @@ const GuestBook = (): JSX.Element => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    let token = '';
+    const userJSON = window.localStorage.getItem('user');
+    if (userJSON) {
+      const user = JSON.parse(userJSON) as User;
+      token = user.token;
+    }
     try {
-      await sendMessage(userId, message);
+      await sendMessage(message, token);
       setMessage('');
       void fetchMessages();
     } catch (error: unknown) {

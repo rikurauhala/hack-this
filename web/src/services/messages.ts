@@ -28,13 +28,13 @@ export const getAllMessages = async (): Promise<AllMessagesResponse> => {
   }
 };
 
-export const sendMessage = async (userId: number | null, message: string): Promise<Message> => {
+export const sendMessage = async (message: string, token: string): Promise<Message> => {
   try {
+    const config = { headers: { Authorization: token } };
     const messageJson = {
-      userId: userId,
       message: message
     };
-    const response = await axios.post<Message>('/api/messages', messageJson);
+    const response = await axios.post<Message>('/api/messages', messageJson, config);
     console.log('Message sent:', response.data);
     return response.data;
   } catch (error: unknown) {
