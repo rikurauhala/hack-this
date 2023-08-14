@@ -7,6 +7,7 @@ export interface Message {
 }
 
 export interface User {
+  admin: boolean;
   id: string;
   token: string;
   username: string;
