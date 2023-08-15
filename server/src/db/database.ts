@@ -137,6 +137,23 @@ class Database {
     });
   }
 
+  public deleteMessage(messageId: number): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.db.run(
+        'DELETE FROM messages WHERE id = ?',
+        [messageId],
+        function (error: Error | null) {
+          if (error) {
+            reject(error);
+          } else {
+            const isDeleted = this.changes === 1;
+            resolve(isDeleted);
+          }
+        }
+      );
+    });
+  }
+
   public close(): void {
     this.db.close((error) => {
       if (error) {
