@@ -1,9 +1,9 @@
 export interface Message {
   createdAt: string;
   message: string;
-  messageId: string;
+  messageId: number;
   username: string;
-  userId: string;
+  userId: number;
 }
 
 export interface User {

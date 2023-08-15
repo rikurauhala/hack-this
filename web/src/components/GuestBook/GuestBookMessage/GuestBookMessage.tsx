@@ -21,11 +21,11 @@ const GuestBookMessage = ({ message }: GuestBookMessageProps): JSX.Element => {
     <li className={styleMessage}>
       <GuestBookMessageTimestamp timestamp={message.createdAt} />
       <span className="mr-1"> </span>
-      <GuestBookMessageUsername userId={parseInt(message.userId)} username={message.username} />
+      <GuestBookMessageUsername userId={message.userId} username={message.username} />
       <span className="mr-1">: </span>
       <GuestBookMessageContent message={message.message} />
       <span className="mr-1"> </span>
-      <GuestBookMessageDeleteButton messageId={message.messageId} onClick={() => console.log('')} />
+      <GuestBookMessageDeleteButton messageId={message.messageId} />
     </li>
   );
 };

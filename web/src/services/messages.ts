@@ -53,3 +53,26 @@ export const sendMessage = async (message: string, token: string): Promise<Messa
     }
   }
 };
+
+export const deleteMessage = async (messageId: number, token: string): Promise<void> => {
+  try {
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+    console.log(config);
+    await axios.delete(`/api/messages/${messageId}`, config);
+    console.log('Message deleted');
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      const responseError = error as AxiosError;
+      console.error('Error deleting message:', responseError.response?.data);
+      if (responseError.response?.data) {
+        const data = responseError.response.data as ErrorResponse;
+        throw new Error(data.message);
+      } else {
+        throw new Error('Deleting message failed.');
+      }
+    } else {
+      console.error('Error deleting message:', error);
+      throw new Error('Deleting message failed.');
+    }
+  }
+};
