@@ -62,6 +62,11 @@ const GuestBook = (): JSX.Element => {
     }
   };
 
+  const removeMessage = (messageId: number): void => {
+    const updatedMessages = messages.filter(message => message.messageId !== messageId);
+    setMessages(updatedMessages);
+  };
+
   const styleContainer = `
     container
     max-w-screen-md
@@ -87,7 +92,10 @@ const GuestBook = (): JSX.Element => {
       ) : (
         <Paragraph text="Log in to send a message." />
       )}
-      <GuestBookMessages messages={messages} />
+      <GuestBookMessages
+        messages={messages}
+        removeMessage={removeMessage}
+      />
     </div>
   );
 };

@@ -7,9 +7,10 @@ import GuestBookMessageUsername from './GuestBookMessageUsername';
 
 interface GuestBookMessageProps {
   message: Message;
+  removeMessage: (messageId: number) => void;
 }
 
-const GuestBookMessage = ({ message }: GuestBookMessageProps): JSX.Element => {
+const GuestBookMessage = ({ message, removeMessage }: GuestBookMessageProps): JSX.Element => {
   const styleMessage = `
     ${colorText}
     flex
@@ -25,7 +26,7 @@ const GuestBookMessage = ({ message }: GuestBookMessageProps): JSX.Element => {
       <span className="mr-1">: </span>
       <GuestBookMessageContent message={message.message} />
       <span className="mr-1"> </span>
-      <GuestBookMessageDeleteButton messageId={message.messageId} />
+      <GuestBookMessageDeleteButton messageId={message.messageId} removeMessage={removeMessage} />
     </li>
   );
 };

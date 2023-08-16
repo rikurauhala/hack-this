@@ -5,9 +5,10 @@ import GuestBookMessage from './GuestBookMessage';
 
 interface GuestBookMessagesProps {
   messages: Message[];
+  removeMessage: (messageId: number) => void;
 }
 
-const GuestBookMessages = ({ messages }: GuestBookMessagesProps): JSX.Element => (
+const GuestBookMessages = ({ messages, removeMessage }: GuestBookMessagesProps): JSX.Element => (
   <div className="mt-8">
     <Subtitle text="Messages" />
     <ul>
@@ -18,6 +19,7 @@ const GuestBookMessages = ({ messages }: GuestBookMessagesProps): JSX.Element =>
           <GuestBookMessage
             key={message.messageId}
             message={message}
+            removeMessage={removeMessage}
           />
         ))
       )}

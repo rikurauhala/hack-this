@@ -7,9 +7,10 @@ import { User } from '../../../types';
 
 interface GuestBookMessageDeleteButtonProps {
   messageId: number;
+  removeMessage: (messageId: number) => void;
 }
 
-const GuestBookMessageDeleteButton = ({ messageId }: GuestBookMessageDeleteButtonProps) => {
+const GuestBookMessageDeleteButton = ({ messageId, removeMessage }: GuestBookMessageDeleteButtonProps) => {
   const [admin, setAdmin] = useState<boolean>(false);
 
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const GuestBookMessageDeleteButton = ({ messageId }: GuestBookMessageDeleteButto
         token = user.token;
       }
       await deleteMessage(messageId, token);
+      removeMessage(messageId);
       dispatch(setStatus('Message deleted', 'SUCCESS'));
     } catch (error: unknown) {
       if (error instanceof Error) {
