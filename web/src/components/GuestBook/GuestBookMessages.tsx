@@ -12,7 +12,7 @@ const GuestBookMessages = ({ messages, removeMessage }: GuestBookMessagesProps):
   <div className="mt-8">
     <Subtitle text="Messages" />
     <ul>
-      {messages.length === 0 ? (
+      {!messages || messages.length === 0 ? (
         <Paragraph text="No messages yet!" />
       ) : (
         messages.map((message) => (
