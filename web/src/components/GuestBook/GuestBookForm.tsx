@@ -8,6 +8,14 @@ interface GuestBookFormProps {
   setMessage: (newMessage: string) => void;
 }
 
+/**
+ * Renders a guestbook form component with input for entering a message and buttons to submit and clear the message.
+ *
+ * @param {(event: FormEvent<HTMLFormElement>) => void} props.handleSubmit - A function to handle form submission.
+ * @param {string} props.message - The current message input value.
+ * @param {(newMessage: string) => void} props.setMessage - A function to update the message input value.
+ * @returns {JSX.Element} The rendered GuestBookForm component.
+ */
 const GuestBookForm = ({ handleSubmit, message, setMessage }: GuestBookFormProps): JSX.Element => {
   const styleForm = `
     bg-gray-800

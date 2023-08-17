@@ -11,6 +11,12 @@ interface NavigationBarIconProps {
   page: ReactNode;
 }
 
+/**
+ * Renders an icon element based on the specified page, used in the navigation bar.
+ *
+ * @param {ReactNode} props.page - The identifier for the specific page or action associated with the icon.
+ * @returns {JSX.Element} The rendered NavigationBarIcon component.
+ */
 const NavigationBarIcon = ({ page }: NavigationBarIconProps): JSX.Element => {
   const style = `
     h-5

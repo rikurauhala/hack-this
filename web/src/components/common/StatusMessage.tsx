@@ -7,6 +7,11 @@ import './StatusMessage.css';
 
 export type Status = 'SUCCESS' | 'ERROR' | null;
 
+/**
+ * Renders a status message component to display success or error messages with automatic clearing.
+ *
+ * @returns {JSX.Element} The rendered StatusMessage component.
+ */
 const StatusMessage = (): JSX.Element => {
   const message = useSelector((state: State) => state.message);
   const status = useSelector((state: State) => state.status);

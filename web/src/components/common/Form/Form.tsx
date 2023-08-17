@@ -13,6 +13,18 @@ interface FormProps {
   username: string;
 }
 
+/**
+ * A reusable form component with input fields for username and password, and a submit button.
+ *
+ * @param {string} props.buttonText - The text to display on the submit button.
+ * @param {Function} props.handleSubmit - The function to be called on form submission.
+ * @param {ReactNode} props.icon - The icon to display alongside the form.
+ * @param {string} props.password - The current password input value.
+ * @param {Function} props.setPassword - A function to update the password input value.
+ * @param {Function} props.setUsername - A function to update the username input value.
+ * @param {string} props.username - The current username input value.
+ * @returns {JSX.Element} The rendered Form component.
+ */
 const Form = (props: FormProps): JSX.Element => {
   const { buttonText, handleSubmit, icon, password, setPassword, setUsername, username } = props;
 

@@ -2,6 +2,11 @@ import { colorText } from '../../theme';
 import FooterDivider from './FooterDivider';
 import FooterLink from './FooterLink';
 
+/**
+ * Renders a footer component with links and a divider, used for displaying various information about the site.
+ *
+ * @returns {JSX.Element} The rendered Footer component.
+ */
 const Footer = (): JSX.Element => {
   const style = `
     ${colorText}

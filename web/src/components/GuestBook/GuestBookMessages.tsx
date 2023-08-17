@@ -8,6 +8,13 @@ interface GuestBookMessagesProps {
   removeMessage: (messageId: number) => void;
 }
 
+/**
+ * Renders a list of guestbook messages.
+ *
+ * @param {Message[]} props.messages - An array of guestbook messages.
+ * @param {(messageId: number) => void} props.removeMessage - A function to remove a guestbook message.
+ * @returns {JSX.Element} The rendered GuestBookMessages component.
+ */
 const GuestBookMessages = ({ messages, removeMessage }: GuestBookMessagesProps): JSX.Element => (
   <div className="mt-8">
     <Subtitle text="Messages" />

@@ -11,6 +11,16 @@ interface RegistrationFormProps {
   username: string;
 }
 
+/**
+ * Renders a registration form component with input fields for username and password, using the Form component.
+ *
+ * @param {(event: FormEvent<HTMLFormElement>) => void} props.handleSubmit - A function to handle form submission.
+ * @param {string} props.password - The current password input value.
+ * @param {(newPassword: string) => void} props.setPassword - A function to update the password input value.
+ * @param {(newUsername: string) => void} props.setUsername - A function to update the username input value.
+ * @param {string} props.username - The current username input value.
+ * @returns {JSX.Element} The rendered RegistrationForm component.
+ */
 const RegistrationForm = (props: RegistrationFormProps): JSX.Element => {
   const styleIcon = `
     ${colorMain}

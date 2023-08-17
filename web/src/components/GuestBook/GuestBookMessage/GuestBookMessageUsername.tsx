@@ -27,6 +27,13 @@ interface GuestBookMessageUsernameProps {
   userId: number;
 }
 
+/**
+ * Renders the username of a guestbook message with dynamically assigned color based on the user ID.
+ *
+ * @param {string} props.username - The username to be displayed.
+ * @param {number} props.userId - The ID of the user associated with the message.
+ * @returns {JSX.Element} The rendered GuestBookMessageUsername component.
+ */
 const GuestBookMessageUsername = ({ username, userId }: GuestBookMessageUsernameProps): JSX.Element => (
   <strong className={getColor(userId)}>{username}</strong>
 );

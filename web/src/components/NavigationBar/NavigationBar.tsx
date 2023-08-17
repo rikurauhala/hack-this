@@ -7,6 +7,11 @@ import NavigationBarIcon from './NavigationBarIcon';
 import { gradientNavigationBar } from '../../theme';
 import { User } from '../../types';
 
+/**
+ * Renders a navigation bar component with links and user-specific content.
+ *
+ * @returns {JSX.Element} The rendered NavigationBar component.
+ */
 const NavigationBar = (): JSX.Element => {
   const [user, setUser] = useState<string>('');
   const location = useLocation();

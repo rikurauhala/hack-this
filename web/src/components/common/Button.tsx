@@ -6,7 +6,16 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
-const Button = ({ onClick, text, type }: ButtonProps): JSX.Element => {
+/**
+ * Renders a button element with customizable text and styling.
+ *
+ * @param {() => void} [props.onClick] - A function to be executed when the button is clicked.
+ * @param {string} props.text - The text to display on the button.
+ * @param {'button' | 'submit' | 'reset'} [props.type] - The type of the button (default is 'submit').
+ * @returns {JSX.Element} The rendered Button component.
+ */
+
+const Button = ({ onClick, text, type = 'submit' }: ButtonProps): JSX.Element => {
   const style = `
     ${type === 'reset' ? 'focus:ring-rose-600' : colorButtonFocus}
     ${type === 'reset' ? 'hover:bg-rose-600' : colorButtonHover}
@@ -23,7 +32,7 @@ const Button = ({ onClick, text, type }: ButtonProps): JSX.Element => {
   `;
 
   return (
-    <button className={style} onClick={onClick} type={type || 'submit'}>
+    <button className={style} onClick={onClick} type={type}>
       {text}
     </button>
   );

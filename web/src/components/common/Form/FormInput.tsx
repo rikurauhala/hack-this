@@ -8,6 +8,16 @@ interface FormInputProps {
   value: string;
 }
 
+/**
+ * Renders an input field within a form with a corresponding label.
+ *
+ * @param {string} props.id - The ID of the input element and its corresponding label.
+ * @param {string} props.labelText - The text to display as the label for the input field.
+ * @param {(value: string) => void} props.onChange - A function to handle changes in the input value.
+ * @param {string} props.type - The type of the input field (e.g., "text", "password").
+ * @param {string} props.value - The current value of the input field.
+ * @returns {JSX.Element} The rendered FormInput component.
+ */
 const FormInput = ({ id, labelText, onChange, type, value }: FormInputProps): JSX.Element => {
   const styleLabel = `
     ${colorText}

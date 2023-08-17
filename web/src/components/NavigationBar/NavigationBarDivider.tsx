@@ -1,5 +1,10 @@
 import { colorNavigationBar } from '../../theme';
 
+/**
+ * Renders a divider element used to separate links in the navigation bar.
+ *
+ * @returns {JSX.Element} The rendered NavigationBarDivider component.
+ */
 const NavigationBarDivider = (): JSX.Element => {
   const style = `
     ${colorNavigationBar}

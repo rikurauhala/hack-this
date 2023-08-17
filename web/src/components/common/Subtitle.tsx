@@ -4,6 +4,12 @@ interface SubtitleProps {
   text: string;
 }
 
+/**
+ * Renders a subtitle element with customizable text.
+ *
+ * @param {string} props.text - The text to display within the subtitle.
+ * @returns {JSX.Element} The rendered Subtitle component.
+ */
 const Subtitle = ({ text }: SubtitleProps): JSX.Element => {
   const style = `
     ${colorText}

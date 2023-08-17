@@ -6,6 +6,12 @@ const formatTimestamp = (timestamp: string): string => (
   new Date(timestamp).toISOString().slice(0, 10)
 );
 
+/**
+ * Renders the timestamp of a guestbook message in a formatted manner.
+ *
+ * @param {string} props.timestamp - The timestamp to be formatted and displayed.
+ * @returns {JSX.Element} The rendered GuestBookMessageTimestamp component.
+ */
 const GuestBookMessageTimestamp = ({ timestamp }: GuestBookMessageTimestampProps): JSX.Element => {
   const formattedTimestamp = formatTimestamp(timestamp);
 

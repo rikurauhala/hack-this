@@ -1,6 +1,11 @@
 import { colorNavigationBar } from '../../theme';
 
-const NavigationBarLogo = () => {
+/**
+ * Renders the logo for the navigation bar, displaying the application name.
+ *
+ * @returns {JSX.Element} The rendered NavigationBarLogo component.
+ */
+const NavigationBarLogo = (): JSX.Element => {
   const style = `
     ${colorNavigationBar}
     text-lg

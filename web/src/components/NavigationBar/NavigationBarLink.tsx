@@ -8,6 +8,14 @@ interface NavigationBarLinkProps {
   icon: ReactNode;
 }
 
+/**
+ * Renders a link element used in the navigation bar with customizable text, icon, and behavior.
+ *
+ * @param {string} props.to - The URL to link to.
+ * @param {string} props.text - The text to display within the link.
+ * @param {ReactNode} props.icon - The icon to display within the link.
+ * @returns {JSX.Element} The rendered NavigationBarLink component.
+ */
 const NavigationBarLink = ({ to, text, icon }: NavigationBarLinkProps): JSX.Element => {
   const currentPage = useLocation().pathname;
 

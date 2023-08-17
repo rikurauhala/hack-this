@@ -10,6 +10,13 @@ interface GuestBookMessageDeleteButtonProps {
   removeMessage: (messageId: number) => void;
 }
 
+/**
+ * Renders a delete button for a guestbook message, visible only to administrators, and handles the deletion process.
+ *
+ * @param {number} props.messageId - The ID of the message to be deleted.
+ * @param {(messageId: number) => void} props.removeMessage - A function to remove a guestbook message.
+ * @returns {JSX.Element | null} The rendered GuestBookMessageDeleteButton component, only if the user is an admin.
+ */
 const GuestBookMessageDeleteButton = ({ messageId, removeMessage }: GuestBookMessageDeleteButtonProps) => {
   const [admin, setAdmin] = useState<boolean>(false);
 

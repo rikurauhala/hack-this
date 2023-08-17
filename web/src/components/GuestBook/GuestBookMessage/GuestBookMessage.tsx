@@ -10,6 +10,13 @@ interface GuestBookMessageProps {
   removeMessage: (messageId: number) => void;
 }
 
+/**
+ * Renders a single guestbook message item, including its content, timestamp, username, and delete button.
+ *
+ * @param {Message} props.message - The guestbook message to be displayed.
+ * @param {(messageId: number) => void} props.removeMessage - A function to remove a guestbook message.
+ * @returns {JSX.Element} The rendered GuestBookMessage component.
+ */
 const GuestBookMessage = ({ message, removeMessage }: GuestBookMessageProps): JSX.Element => {
   const styleMessage = `
     ${colorText}
