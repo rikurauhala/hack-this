@@ -43,6 +43,22 @@
 > **Warning**  
 > Do not use the code found in this repository in production. Also, do not use it to do anything illegal or exploit systems that you do not own or have a permission to enter. **For educational purposes only**.
 
+<details>
+  <summary>
+    Screenshot
+  </summary>
+  <p>
+    <img
+      alt="The guest book page of the application"
+      src="docs/img/guestbook.png"
+      title="The guest book page of the application, viewed as an admin"
+    />
+  </p>
+  <p>
+    The guest book page of the application, viewed as an admin
+  </p>
+</details>
+
 ## How to install
 
 Follow the instructions to set up the project.
