@@ -73,7 +73,7 @@ Follow the instructions to set up the project.
 
 ### Installation script
 
-A script has been written to automate the installation process. Install the application by running the script or follow the instructions below for a manual installation.
+An [installation script](scripts/install.sh) has been written to automate the installation process. Install the application by running the script or follow the instructions below for a manual installation.
 
 ```bash
 # Move to a directory where you wish to install the application
