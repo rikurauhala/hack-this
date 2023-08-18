@@ -14,6 +14,7 @@ curl -X POST "http://localhost:8080/api/login" \
 
 ```bash
 # Execute a script when the guestbook page is loaded
+# Make sure to log in and replace "<token>" with your own token first
 curl -X POST "http://localhost:8080/api/messages" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
@@ -25,6 +26,7 @@ curl -X POST "http://localhost:8080/api/messages" \
 
 ```bash
 # Delete any message without admin privileges
+# Make sure to log in and replace "<token>" with your own token first
 curl -X DELETE "http://localhost:8080/api/messages/<messageId>" \
   -H "Authorization: Bearer <token>" \
   -v && echo ""
