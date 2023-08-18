@@ -27,6 +27,7 @@ curl -X POST "http://localhost:8080/api/messages" \
 ```bash
 # Delete any message without admin privileges
 # Make sure to log in and replace "<token>" with your own token first
+# Also replace <messageId> with the id of the message you want to delete
 curl -X DELETE "http://localhost:8080/api/messages/<messageId>" \
   -H "Authorization: Bearer <token>" \
   -v && echo ""
