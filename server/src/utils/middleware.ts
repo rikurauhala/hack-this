@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { db } from '../db';
 import { User } from '../types';
 import { SECRET } from './config';
-import { logError } from './logger';
+import { logError, logRequest } from './logger';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -65,5 +65,11 @@ export const userExtractor = async (request: Request, _response: Response, next:
       request.user = await db.getUserById(decodedToken.id);
     }
   }
+  next();
+};
+
+export const requestLogger = (request: Request, _response: Response, next: NextFunction): void => {
+  const { method, originalUrl, ip } = request;
+  logRequest(method, originalUrl, ip);
   next();
 };
