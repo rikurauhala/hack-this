@@ -3,6 +3,12 @@ interface Validity {
   errorMessage?: string;
 }
 
+/**
+ * Validates a username based on certain criteria.
+ *
+ * @param {string} username - The username to be validated.
+ * @returns {Validity} An object indicating the validity of the username and an error message (if invalid).
+ */
 export const validateUsername = (username: string): Validity => {
   if (username.length === 0) {
     return {
@@ -38,6 +44,12 @@ export const validateUsername = (username: string): Validity => {
   };
 };
 
+/**
+ * Validates a password based on certain criteria.
+ *
+ * @param {string} password - The password to be validated.
+ * @returns {Validity} An object indicating the validity of the password and an error message (if invalid).
+ */
 export const validatePassword = (password: string): Validity => {
   if (password.length === 0) {
     return {
