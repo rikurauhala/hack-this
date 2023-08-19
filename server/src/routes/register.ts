@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Router from 'express-promise-router';
 import { db } from '../db';
+import { logInfo } from '../utils/logger';
 import { validatePassword, validateUsername } from '../utils/validators';
 
 const registerRouter = Router();
@@ -22,7 +23,7 @@ registerRouter.post('/', async (request: Request, response: Response) => {
   }
 
   await db.registerUser(username, password);
-  console.log('Registration successful');
+  logInfo('Registration successful');
   return response.status(201).json({ message: 'Registration successful' });
 });
 

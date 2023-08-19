@@ -50,7 +50,6 @@ export const sendMessage = async (message: string, token: string): Promise<Messa
       message: message
     };
     const response = await axios.post<Message>('/api/messages', messageJson, config);
-    console.log('Message sent:', response.data);
     return response.data;
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
@@ -80,9 +79,7 @@ export const sendMessage = async (message: string, token: string): Promise<Messa
 export const deleteMessage = async (messageId: number, token: string): Promise<void> => {
   try {
     const config = { headers: { Authorization: `Bearer ${token}` } };
-    console.log(config);
     await axios.delete(`/api/messages/${messageId}`, config);
-    console.log('Message deleted');
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
       const responseError = error as AxiosError;

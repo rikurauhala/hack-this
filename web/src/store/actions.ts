@@ -8,7 +8,7 @@ import { SET_STATUS, CLEAR_STATUS } from './statusActionTypes';
  * @param {Status} status - The status type (SUCCESS, ERROR, or null) of the status message.
  * @returns {object} An action object with type SET_STATUS and payload containing the message and status.
  */
-export const setStatus = (message: string, status: Status): object => ({
+export const setStatus = (message: string, status: Status) => ({
   type: SET_STATUS,
   payload: { message, status },
 });
@@ -18,6 +18,6 @@ export const setStatus = (message: string, status: Status): object => ({
  *
  * @returns {object} An action object with type CLEAR_STATUS.
  */
-export const clearStatus = (): object => ({
+export const clearStatus = () => ({
   type: CLEAR_STATUS,
 });

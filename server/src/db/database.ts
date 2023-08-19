@@ -1,5 +1,6 @@
 import sqlite3 from 'sqlite3';
 import { Message, User } from '../types';
+import { logError, logInfo } from '../utils/logger';
 
 class Database {
   private db: sqlite3.Database;
@@ -7,9 +8,9 @@ class Database {
   constructor(dbFilePath: string) {
     this.db = new sqlite3.Database(dbFilePath, (error) => {
       if (error) {
-        console.error('Error connecting to the database:', error.message);
+        logError('Error connecting to the database:', error.message);
       } else {
-        console.log('Connected to the database');
+        logInfo('Connected to the database');
       }
     });
   }
@@ -157,9 +158,9 @@ class Database {
   public close(): void {
     this.db.close((error) => {
       if (error) {
-        console.error('Error closing the database connection:', error.message);
+        logError('Error closing the database connection:', error.message);
       } else {
-        console.log('Database connection closed');
+        logInfo('Database connection closed');
       }
     });
   }

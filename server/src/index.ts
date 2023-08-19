@@ -5,6 +5,7 @@ import path from 'path';
 import mountRoutes from './routes';
 import * as middleware from './utils/middleware';
 import { PORT } from './utils/config';
+import { logInfo } from './utils/logger';
 
 const app = express();
 app.use(express.json());
@@ -26,5 +27,5 @@ app.use(middleware.errorHandler);
 app.use(middleware.unknownEndpoint);
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  logInfo(`Server running on port ${PORT}`);
 });
