@@ -10,7 +10,7 @@ const errorPrefix = `[${textColorRed}ERROR${textColorReset}]`;
  *
  * @param {...string} params - The information to be logged.
  */
-export const logInfo = (...params: string[]) => {
+export const logInfo = (...params: string[]): void => {
   if (process.env.NODE_ENV !== 'test') {
     console.log(infoPrefix, ...params);
   }
@@ -21,7 +21,7 @@ export const logInfo = (...params: string[]) => {
  *
  * @param {...string} params - The error information to be logged.
  */
-export const logError = (...params: string[]) => {
+export const logError = (...params: string[]): void => {
   if (process.env.NODE_ENV !== 'test') {
     console.error(errorPrefix, ...params);
   }
