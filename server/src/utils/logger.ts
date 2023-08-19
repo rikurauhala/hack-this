@@ -1,3 +1,10 @@
+const textColorYellow = '\x1b[33m';
+const textColorRed = '\x1b[31m';
+const textColorReset = '\x1b[0m';
+
+const infoPrefix = `[${textColorYellow}INFO${textColorReset}]`;
+const errorPrefix = `[${textColorRed}ERROR${textColorReset}]`;
+
 /**
  * Logs information to the console, except when in the 'test' environment.
  *
@@ -5,7 +12,7 @@
  */
 export const logInfo = (...params: string[]) => {
   if (process.env.NODE_ENV !== 'test') {
-    console.log(...params);
+    console.log(infoPrefix, ...params);
   }
 };
 
@@ -16,6 +23,6 @@ export const logInfo = (...params: string[]) => {
  */
 export const logError = (...params: string[]) => {
   if (process.env.NODE_ENV !== 'test') {
-    console.error(...params);
+    console.error(errorPrefix, ...params);
   }
 };
