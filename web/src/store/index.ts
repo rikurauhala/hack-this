@@ -12,6 +12,13 @@ const initialState: State = {
   status: null,
 };
 
+/**
+ * The reducer function for handling status-related actions.
+ *
+ * @param {State} state - The current state.
+ * @param {StatusAction} action - The action being dispatched.
+ * @returns {State} The new state after applying the action.
+ */
 const statusReducer = (state: State = initialState, action: StatusAction): State => {
   switch (action.type) {
     case 'SET_STATUS':

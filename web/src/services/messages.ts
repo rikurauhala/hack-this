@@ -7,6 +7,13 @@ interface ErrorResponse {
 
 type AllMessagesResponse = Message[] | AxiosResponse<ErrorResponse>;
 
+/**
+ * Fetches all messages from the server.
+ *
+ * @returns {Promise<AllMessagesResponse>} A promise that resolves with the array of messages on success,
+ * or an AxiosResponse containing an error message on failure.
+ * @throws {Error} If the fetching process fails, an error is thrown with an appropriate message.
+ */
 export const getAllMessages = async (): Promise<AllMessagesResponse> => {
   try {
     const response = await axios.get('/api/messages');
@@ -28,6 +35,14 @@ export const getAllMessages = async (): Promise<AllMessagesResponse> => {
   }
 };
 
+/**
+ * Sends a new message to the server.
+ *
+ * @param {string} message - The message content to be sent.
+ * @param {string} token - The user's authentication token.
+ * @returns {Promise<Message>} A promise that resolves with the sent message data on success.
+ * @throws {Error} If sending the message fails, an error is thrown with an appropriate message.
+ */
 export const sendMessage = async (message: string, token: string): Promise<Message> => {
   try {
     const config = { headers: { Authorization: token } };
@@ -54,6 +69,14 @@ export const sendMessage = async (message: string, token: string): Promise<Messa
   }
 };
 
+/**
+ * Deletes a message from the server.
+ *
+ * @param {number} messageId - The ID of the message to be deleted.
+ * @param {string} token - The user's authentication token.
+ * @returns {Promise<void>} A promise that resolves on successful message deletion.
+ * @throws {Error} If deleting the message fails, an error is thrown with an appropriate message.
+ */
 export const deleteMessage = async (messageId: number, token: string): Promise<void> => {
   try {
     const config = { headers: { Authorization: `Bearer ${token}` } };
