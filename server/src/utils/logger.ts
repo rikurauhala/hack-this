@@ -1,3 +1,6 @@
+import fs from 'fs';
+import { LOG_FILE_PATH } from './config';
+
 const textColorYellow = '\x1b[33m';
 const textColorRed = '\x1b[31m';
 const textColorBlue = '\x1b[34m';
@@ -7,6 +10,31 @@ const textColorReset = '\x1b[0m';
 const infoPrefix = `[${textColorYellow}INFO${textColorReset}]`;
 const errorPrefix = `[${textColorRed}ERROR${textColorReset}]`;
 const requestPrefix = `[${textColorBlue}REQUEST${textColorReset}]`;
+
+/**
+ * Strips ANSI color codes from a string.
+ *
+ * @param {string} input - The string containing color codes.
+ * @returns {string} The string with color codes removed.
+ */
+const stripColors = (input: string): string => {
+  const colors = new RegExp(/\x1B\[\d+m/g);
+  return input.replace(colors, '');
+};
+
+/**
+ * Appends a message to the log file. Set the log file path via config.
+ *
+ * @param {string} message - The message to be appended to the log file.
+ */
+const appendToFile = (message: string): void => {
+  try {
+    const plainMessage = stripColors(message);
+    fs.appendFileSync(LOG_FILE_PATH, plainMessage + '\n');
+  } catch (error) {
+    console.error('Error writing to log file:', error);
+  }
+};
 
 /**
  * Gets the current timestamp in the format "[HH:mm:ss]".
@@ -25,7 +53,9 @@ const getTimestamp = (): string => {
  */
 export const logInfo = (...params: string[]): void => {
   if (process.env.NODE_ENV !== 'test') {
-    console.log(getTimestamp(), infoPrefix, ...params);
+    const logMessage = `${getTimestamp()} ${infoPrefix} ${params.join(' ')}`;
+    console.log(logMessage);
+    appendToFile(logMessage);
   }
 };
 
@@ -36,7 +66,9 @@ export const logInfo = (...params: string[]): void => {
  */
 export const logError = (...params: string[]): void => {
   if (process.env.NODE_ENV !== 'test') {
-    console.error(getTimestamp(), errorPrefix, ...params);
+    const logMessage = `${getTimestamp()} ${errorPrefix} ${params.join(' ')}`;
+    console.error(logMessage);
+    appendToFile(logMessage);
   }
 };
 
@@ -46,10 +78,11 @@ export const logError = (...params: string[]): void => {
  * @param {string} method - The HTTP request method (e.g., 'GET', 'POST', 'PUT', 'DELETE').
  * @param {string} path - The path of the request.
  * @param {string} ip - The IP address from which the request originated.
- * @returns {void}
  */
 export const logRequest = (method: string, path: string, ip: string): void => {
   if (process.env.NODE_ENV !== 'test') {
-    console.log(getTimestamp(), requestPrefix, `New ${method} request to ${path} from ${ip}`);
+    const logMessage = `${getTimestamp()} ${requestPrefix} New ${method} request to ${path} from ${ip}`;
+    console.log(logMessage);
+    appendToFile(logMessage);
   }
 };

@@ -32,6 +32,7 @@ module.exports = {
     'indent': ['error', 2, { SwitchCase: 1 }],
     'max-len': ['error', { code: 120, tabWidth: 2 }],
     'no-case-declarations': 'off',
+    'no-control-regex': 'off',
     'no-multi-spaces': 'error',
     'no-trailing-spaces': 'error',
     'no-useless-escape': 'off',
