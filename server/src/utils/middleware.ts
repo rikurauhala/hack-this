@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { db } from '../db';
 import { User } from '../types';
 import { SECRET } from './config';
-import { logError, logRequest } from './logger';
+import * as logger from './logger';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -22,7 +22,7 @@ interface Error {
 
 export const errorHandler = (error: Error, _request: Request, response: Response, next: NextFunction): void => {
   const errorMessage = error.message;
-  logError(errorMessage);
+  logger.logError(errorMessage);
 
   switch (error.name) {
     case 'ValidationError':
@@ -70,6 +70,6 @@ export const userExtractor = async (request: Request, _response: Response, next:
 
 export const requestLogger = (request: Request, _response: Response, next: NextFunction): void => {
   const { method, originalUrl, ip } = request;
-  logRequest(method, originalUrl, ip);
+  logger.logRequest(method, originalUrl, ip);
   next();
 };
