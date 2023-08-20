@@ -43,6 +43,9 @@
 > **Warning**  
 > Do not use the code found in this repository in production. Also, do not use it to do anything illegal or exploit systems that you do not own or have a permission to enter. **For educational purposes only**.
 
+> **Info**  
+> For a fixed (secure) version of the application, see the [fixed](https://github.com/rikurauhala/hack-this/tree/fixed) branch.
+
 <details>
   <summary>
     Screenshot
@@ -55,7 +58,9 @@
     />
   </p>
   <p>
-    The guest book page of the application, viewed as an admin
+    <i>
+      The guest book page of the application, viewed as an admin
+    </i>
   </p>
 </details>
 
