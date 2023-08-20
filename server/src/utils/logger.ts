@@ -1,11 +1,22 @@
 const textColorYellow = '\x1b[33m';
 const textColorRed = '\x1b[31m';
 const textColorBlue = '\x1b[34m';
+const textColorGray = '\x1b[90m';
 const textColorReset = '\x1b[0m';
 
 const infoPrefix = `[${textColorYellow}INFO${textColorReset}]`;
 const errorPrefix = `[${textColorRed}ERROR${textColorReset}]`;
 const requestPrefix = `[${textColorBlue}REQUEST${textColorReset}]`;
+
+/**
+ * Gets the current timestamp in the format "[HH:mm:ss]".
+ *
+ * @returns {string} The formatted timestamp.
+ */
+const getTimestamp = (): string => {
+  const now = new Date();
+  return `${textColorGray}[${now.toISOString().slice(11, 19)}]${textColorReset}`;
+};
 
 /**
  * Logs information to the console, except when in the 'test' environment.
@@ -14,7 +25,7 @@ const requestPrefix = `[${textColorBlue}REQUEST${textColorReset}]`;
  */
 export const logInfo = (...params: string[]): void => {
   if (process.env.NODE_ENV !== 'test') {
-    console.log(infoPrefix, ...params);
+    console.log(getTimestamp(), infoPrefix, ...params);
   }
 };
 
@@ -25,7 +36,7 @@ export const logInfo = (...params: string[]): void => {
  */
 export const logError = (...params: string[]): void => {
   if (process.env.NODE_ENV !== 'test') {
-    console.error(errorPrefix, ...params);
+    console.error(getTimestamp(), errorPrefix, ...params);
   }
 };
 
@@ -39,6 +50,6 @@ export const logError = (...params: string[]): void => {
  */
 export const logRequest = (method: string, path: string, ip: string): void => {
   if (process.env.NODE_ENV !== 'test') {
-    console.log(requestPrefix, `New ${method} request to ${path} from ${ip}`);
+    console.log(getTimestamp(), requestPrefix, `New ${method} request to ${path} from ${ip}`);
   }
 };
