@@ -8,7 +8,7 @@ The application uses an SQLite3 database.
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
   username TEXT NOT NULL UNIQUE,
-  password_hash TEXT NOT NULL,
+  password TEXT NOT NULL,
   admin BOOLEAN DEFAULT 0
 );
 
@@ -28,7 +28,7 @@ erDiagram
     users {
         id INT PK
         username TEXT
-        password_hash TEXT
+        password TEXT
         admin BOOLEAN
     }
 
