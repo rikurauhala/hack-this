@@ -48,7 +48,7 @@ CREATE TABLE users (
 -- ...
 ```
 
-**branch** fixed, file [init.sql](https://github.com/rikurauhala/hack-this/blob/fixed/server/data/init.sql#L7)
+**branch** fixed, **file** [init.sql](https://github.com/rikurauhala/hack-this/blob/fixed/server/data/init.sql#L7)
 
 ```typescript
 // ...
@@ -79,7 +79,7 @@ loginRouter.post('/', loginRateLimit, async (request: Request, response: Respons
 // ...
 ```
 
-**branch** fixed, file [login.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L28)
+**branch** fixed, **file** [login.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L28)
 
 The first step to fix the vulnerability is to storing passwords as hashes in the database. Never store passwords as plaintext! Checking if the password is correct should be done by comparing only the hashes. The vulnerable SQL query can be taken care of by using parameterized queries for the login function. Modern frameworks and libraries are already making SQL injection more and more obsolete, but the developer still has to know what they are doing. Always use parameterized queries and never trust user input enough to allow it anywhere near the database without checking first.
 
@@ -95,7 +95,7 @@ INSERT INTO users (username, password, admin) VALUES ('admin', 'secret', 1);
 -- ...
 ```
 
-**branch** main, file [init.sql](https://github.com/rikurauhala/hack-this/blob/main/server/data/init.sql#L35)
+**branch** main, **file** [init.sql](https://github.com/rikurauhala/hack-this/blob/main/server/data/init.sql#L35)
 
 The admin account uses a very weak password that can be easily guessed or brute forced. This is a huge security flaw as guessing or cracking the admin password can compromise the whole application and give the attacker access to every functionality on the site.
 
@@ -107,7 +107,7 @@ INSERT INTO users (username, password_hash, admin) VALUES ('Anonymous', '$2b$10$
 -- ...
 ```
 
-**branch** fixed, file [init.sql](https://github.com/rikurauhala/hack-this/blob/fixed/server/data/init.sql#L38)
+**branch** fixed, **file** [init.sql](https://github.com/rikurauhala/hack-this/blob/fixed/server/data/init.sql#L38)
 
 
 ```typescript
@@ -120,7 +120,7 @@ const loginRateLimit = rateLimit({
 });
 ```
 
-**branch** fixed, file [login.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L12)
+**branch** fixed, **file** [login.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L12)
 
 The weak admin password can be fixed by using a random string of characters instead of using a simple six-letter word that can be easily cracked. The admin account name has also been changed for extra security as it makes it harder for the attacker to guess which account they should be targeting. The application contains no public list of administrators so the name of an account is the only thing that might give away administrator status.
 
@@ -152,7 +152,7 @@ messagesRouter.delete('/:messageId', async (request: Request, response: Response
 // ...
 ```
 
-**branch** main, file [messages.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/messages.ts#L33)
+**branch** main, **file** [messages.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/messages.ts#L33)
 
 JSON Web Token (JWT) is used for authenticating users and checking if they have sufficient permissions to perform actions on the website. However, there is a problem: the developer of the application has intended the message deletion functionality to be available only for the admin account, but has forgotten to actually check the admin status before deleting the message. This means that anyone who is logged in and is in posession of a valid token can delete any message.
 
@@ -183,7 +183,7 @@ messagesRouter.delete('/:messageId', async (request: Request, response: Response
 // ...
 ```
 
-**branch** fixed, file [message.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/messages.ts#L43)
+**branch** fixed, **file** [message.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/messages.ts#L43)
 
 An easy fix is to simply verify that the user who made the request does actually have administrative permissions to delete the message. This is why the admin status is stored as a boolean and saved in the token.
 
@@ -216,7 +216,7 @@ messagesRouter.post('/', async (request: Request, response: Response) => {
 // ...
 ```
 
-**branch** main, file [messages.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/messages.ts#L22)
+**branch** main, **file** [messages.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/messages.ts#L22)
 
 ```typescript
 // ...
@@ -226,7 +226,7 @@ const GuestBookMessageContent = ({ message }: GuestBookMessageContentProps): JSX
 // ...
 ```
 
-**branch** main, file [GuestBookMessageContent.tsx](https://github.com/rikurauhala/hack-this/blob/main/web/src/components/GuestBook/GuestBookMessage/GuestBookMessageContent.tsx#L13)
+**branch** main, **file** [GuestBookMessageContent.tsx](https://github.com/rikurauhala/hack-this/blob/main/web/src/components/GuestBook/GuestBookMessage/GuestBookMessageContent.tsx#L13)
 
 The application contains a critical stored cross-site scripting vulnerability. Users can leave messages in the guest book for other users to read. However, the messages are not sanitized at all before being inserted into the database. The vulnerability is made possible by another horrible mistake in the frontend. The frontend is made using the React.js library which by default has some safety measures in place to prevent XSS. However, the application uses the aptly named "dangerouslySetInnerHTML" property to allow unescaped input to be inserted into the DOM.
 
@@ -258,7 +258,7 @@ messagesRouter.post('/', async (request: Request, response: Response) => {
 // ...
 ```
 
-**branch** fixed, file [messages.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/messages.ts#L29)
+**branch** fixed, **file** [messages.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/messages.ts#L29)
 
 ```typescript
 // ...
@@ -268,7 +268,7 @@ const GuestBookMessageContent = ({ message }: GuestBookMessageContentProps): JSX
 // ...
 ```
 
-**branch** fixed, file [GuestBookMessageContent.tsx](https://github.com/rikurauhala/hack-this/blob/fixed/web/src/components/GuestBook/GuestBookMessage/GuestBookMessageContent.tsx#L13)
+**branch** fixed, **file** [GuestBookMessageContent.tsx](https://github.com/rikurauhala/hack-this/blob/fixed/web/src/components/GuestBook/GuestBookMessage/GuestBookMessageContent.tsx#L13)
 
 To fix the cross-site scripting vulnerability, messages are sanitized in the backend and the frontend no longer uses the dangerouslySetInnerHTML property.
 
@@ -288,7 +288,7 @@ export const requestLogger = (request: Request, _response: Response, next: NextF
 // ...
 ```
 
-**branch** main, file [middleware.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/utils/middleware.ts#L71)
+**branch** main, **file** [middleware.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/utils/middleware.ts#L71)
 
 ```typescript
 // ...
@@ -301,7 +301,7 @@ app.use(middleware.userExtractor);
 // ...
 ```
 
-**branch** main, file [index.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/index.ts#L13)
+**branch** main, **file** [index.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/index.ts#L13)
 
 Middleware logging all requests to the server has been created but the developer has forgotten to turn actually use it. If all requests were properly being logged, the administrators could more easily detect any suspicious activity and take action if necessary.
 
@@ -317,7 +317,7 @@ app.use(middleware.userExtractor);
 // ...
 ```
 
-**branch** fixed, file [index.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/index.ts#L13)
+**branch** fixed, **file** [index.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/index.ts#L13)
 
 Fixing the logging issue is trivial. As the request logger middleware already exists, it can be easily turned on. The middleware logs all requests the server has received, their timestamp and the IP address the request originated from. For now the logs are written into a text file and require manual review but as the logging functionality already exists, it should be easy to extend it include more information.
 
