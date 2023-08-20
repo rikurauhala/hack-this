@@ -16,7 +16,7 @@ CREATE TABLE messages (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Password for Anonymous (admin) is 'secret'
+-- Password for Anonymous (admin) is '6mGRYR@4joEv8l6ot3salAZgSqG%xv'
 -- Password for everyone else is 'password'
 
 INSERT INTO users (username, password_hash) VALUES ('John', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
@@ -35,7 +35,7 @@ INSERT INTO users (username, password_hash) VALUES ('Matthew', '$2b$10$a0ZrVb8h5
 INSERT INTO users (username, password_hash) VALUES ('Laura', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
 INSERT INTO users (username, password_hash) VALUES ('Alexander', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
 
-INSERT INTO users (username, password_hash, admin) VALUES ('Anonymous', '$2b$10$vTU5RSiYAtRghDmt9abHVOVwV6Xt7BDgxSdpk4MkGYhbBNmO2zb3O', 1);
+INSERT INTO users (username, password_hash, admin) VALUES ('Anonymous', '$2b$10$iqtij1IfdJh/S7EB1fL4G.RQt9.j2d6HIcnKKRjYFFKDkmTGGRJqe', 1);
 
 INSERT INTO messages (message, user_id, created_at) VALUES ('Hello, this is John. Nice site!', 1, '2023-07-01 08:30:00');
 INSERT INTO messages (message, user_id, created_at) VALUES ('Hello, this is Alice. Thanks for having me!', 2, '2023-07-10 15:45:00');
