@@ -64,6 +64,12 @@
   </p>
 </details>
 
+## Documentation
+
+- [Vulnerabilities](docs/vulnerabilities.md)
+- [Exploits](docs/exploits.md)
+- [Database schema](docs/database.md)
+
 ## How to install
 
 Follow the instructions to set up the project.
