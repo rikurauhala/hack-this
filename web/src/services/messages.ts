@@ -45,7 +45,7 @@ export const getAllMessages = async (): Promise<AllMessagesResponse> => {
  */
 export const sendMessage = async (message: string, token: string): Promise<Message> => {
   try {
-    const config = { headers: { Authorization: token } };
+    const config = { headers: { Authorization: `Bearer ${token}` } };
     const messageJson = {
       message: message
     };
