@@ -68,8 +68,8 @@ Follow the instructions to set up the project.
 - `node` version 18.7.0 or higher
 - `npm` version 9.8.0 or higher
 - `sqlite3` should be installed
+- `git` should be installed
 - `linux` is recommended
-- `git` is recommended
 
 ### Installation script
 
