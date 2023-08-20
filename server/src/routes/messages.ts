@@ -16,7 +16,7 @@ messagesRouter.post('/', async (request: Request, response: Response) => {
   const userId = decodedToken.id as string;
 
   if (!userId) {
-    return response.status(401).json({ error: 'Token missing or invalid!' });
+    return response.status(401).json({ error: 'Token missing or invalid' });
   }
 
   const message = request.body.message as string;
@@ -26,16 +26,22 @@ messagesRouter.post('/', async (request: Request, response: Response) => {
   }
 
   const createdAt = new Date().toISOString();
-  const insertedMessage = await db.insertMessage(message, createdAt, userId);
+  const sanitizedMessage = encodeURIComponent(message);
+  const insertedMessage = await db.insertMessage(sanitizedMessage, createdAt, userId);
   return response.status(201).json(insertedMessage);
 });
 
 messagesRouter.delete('/:messageId', async (request: Request, response: Response) => {
   const decodedToken = jwt.verify(request.token as string, SECRET) as jwt.JwtPayload;
   const userId = decodedToken.id as string;
+  const admin = decodedToken.admin as string;
 
   if (!userId) {
     return response.status(401).json({ error: 'Token missing or invalid!' });
+  }
+
+  if (!admin) {
+    return response.status(401).json({ error: 'Insufficient permissions' });
   }
 
   const messageId = request.params.messageId;

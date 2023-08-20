@@ -51,10 +51,11 @@ class Database {
     });
   }
 
-  public getUser(username: string, password: string): Promise<User | null> {
+  public getUser(username: string): Promise<User | null> {
     return new Promise<User | null>((resolve, reject) => {
       this.db.get(
-        `SELECT id, username, admin FROM users WHERE username = '${username}' AND password = '${password}'`,
+        'SELECT id, username, password_hash as passwordHash, admin FROM users WHERE username = ?',
+        [username],
         (error: Error | null, row: User) => {
           if (error) {
             reject(error);
@@ -70,11 +71,11 @@ class Database {
     });
   }
 
-  public registerUser(username: string, password: string) {
+  public registerUser(username: string, hashedPassword: string) {
     return new Promise<void>((resolve, reject) => {
       this.db.run(
-        'INSERT INTO users (username, password) VALUES (?, ?)',
-        [username, password],
+        'INSERT INTO users (username, password_hash) VALUES (?, ?)',
+        [username, hashedPassword],
         (error) => {
           if (error) {
             reject(error);

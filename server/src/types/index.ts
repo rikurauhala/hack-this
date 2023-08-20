@@ -9,5 +9,6 @@ export interface Message {
 export interface User {
   id: number;
   username: string;
+  passwordHash: string;
   admin: boolean;
 }

@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import Router from 'express-promise-router';
 import jwt from 'jsonwebtoken';
@@ -11,10 +12,16 @@ loginRouter.post('/', async (request: Request, response: Response) => {
   const username = request.body.username as string;
   const password = request.body.password as string;
 
-  const user: User | null = await db.getUser(username, password);
+  const user: User | null = await db.getUser(username);
 
   if (!user) {
-    return response.status(401).json({ message: 'Invalid username or password' });
+    return response.status(401).json({ message: 'This user does not exist' });
+  }
+
+  const passwordCorrect = await bcrypt.compare(password, user.passwordHash);
+
+  if (!passwordCorrect) {
+    return response.status(401).json({ message: 'Incorrect password' });
   }
 
   const userForToken = {

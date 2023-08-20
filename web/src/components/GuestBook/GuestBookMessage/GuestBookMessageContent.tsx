@@ -10,7 +10,7 @@ interface GuestBookMessageContentProps {
  * @returns {JSX.Element} The rendered GuestBookMessageContent component.
  */
 const GuestBookMessageContent = ({ message }: GuestBookMessageContentProps): JSX.Element => (
-  <span dangerouslySetInnerHTML={{ __html: message }} />
+  <span>{message}</span>
 );
 
 export default GuestBookMessageContent;

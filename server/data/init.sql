@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS messages;
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
   username TEXT NOT NULL UNIQUE,
-  password TEXT NOT NULL,
+  password_hash TEXT NOT NULL,
   admin BOOLEAN DEFAULT 0
 );
 
@@ -16,23 +16,26 @@ CREATE TABLE messages (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-INSERT INTO users (username, password) VALUES ('John', 'zY6N08h932e78YESLZkg');
-INSERT INTO users (username, password) VALUES ('Alice', 'Wn6769CaaAMrI3waK3KG');
-INSERT INTO users (username, password) VALUES ('Michael', '97Fo90zMrX4UMTqjmTfj');
-INSERT INTO users (username, password) VALUES ('Emily', 'wC80w2LszkuRiUqXbJsL');
-INSERT INTO users (username, password) VALUES ('William', '4U00me8B84ldivGtajSv');
-INSERT INTO users (username, password) VALUES ('Emma', 'Y2q0IXX57z42lcvPVXwd');
-INSERT INTO users (username, password) VALUES ('James', '6wT471jowmIyNKyEc46m');
-INSERT INTO users (username, password) VALUES ('Olivia', 'V6qX1v8lWjAIIcuwVYZW');
-INSERT INTO users (username, password) VALUES ('Benjamin', 'oS6F1q42uv5R9WdZ7YZx');
-INSERT INTO users (username, password) VALUES ('Sophia', 'zD81s8m4zfaC2zbfgYo5');
-INSERT INTO users (username, password) VALUES ('Daniel', 'f1u3CNMPO92QN3lY0IPG');
-INSERT INTO users (username, password) VALUES ('Isabella', '9jUc13EwgtlZe35mK8fs');
-INSERT INTO users (username, password) VALUES ('Matthew', 'Ii6751QxTf5bSCTZ8EQM');
-INSERT INTO users (username, password) VALUES ('Laura', 'Dh18fR7bQ0c1xOx3Pctk');
-INSERT INTO users (username, password) VALUES ('Alexander', 'Tl1Bos60NZhgRQoskSUE');
+-- Password for Anonymous (admin) is 'secret'
+-- Password for everyone else is 'password'
 
-INSERT INTO users (username, password, admin) VALUES ('admin', 'secret', 1);
+INSERT INTO users (username, password_hash) VALUES ('John', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Alice', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Michael', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Emily', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('William', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Emma', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('James', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Olivia', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Benjamin', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Sophia', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Daniel', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Isabella', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Matthew', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Laura', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+INSERT INTO users (username, password_hash) VALUES ('Alexander', '$2b$10$a0ZrVb8h5mDCf3TYDB/XBukr8k.UAGcK/eVjVIib9DiveuFpBseGK');
+
+INSERT INTO users (username, password_hash, admin) VALUES ('Anonymous', '$2b$10$vTU5RSiYAtRghDmt9abHVOVwV6Xt7BDgxSdpk4MkGYhbBNmO2zb3O', 1);
 
 INSERT INTO messages (message, user_id, created_at) VALUES ('Hello, this is John. Nice site!', 1, '2023-07-01 08:30:00');
 INSERT INTO messages (message, user_id, created_at) VALUES ('Hello, this is Alice. Thanks for having me!', 2, '2023-07-10 15:45:00');
