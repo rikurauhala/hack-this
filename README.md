@@ -140,9 +140,9 @@ $ sqlite3 database.db < init.sql
 # Create the .env file
 $ cd ..
 $ touch .env
-$ echo DATABASE_URL="path to your database file (data/database.db)" >> .env
-$ echo LOG_FILE_PATH="path to your log file (data/log.txt)" >> .env
-$ echo SECRET="a random string" >> .env
+$ echo DATABASE_URL="$(pwd)/data/database.db)" >> .env
+$ echo LOG_FILE_PATH="$(pwd)/data/log.txt)" >> .env
+$ echo SECRET="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 25 | head -n 1)" >> .env
 ```
 
 #### Frontend

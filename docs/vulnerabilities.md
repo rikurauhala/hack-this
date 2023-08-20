@@ -79,7 +79,7 @@ loginRouter.post('/', loginRateLimit, async (request: Request, response: Respons
 // ...
 ```
 
-**branch** fixed, file [login.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L21)
+**branch** fixed, file [login.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L28)
 
 The first step to fix the vulnerability is to storing passwords as hashes in the database. Never store passwords as plaintext! Checking if the password is correct should be done by comparing only the hashes. The vulnerable SQL query can be taken care of by using parameterized queries for the login function. Modern frameworks and libraries are already making SQL injection more and more obsolete, but the developer still has to know what they are doing. Always use parameterized queries and never trust user input enough to allow it anywhere near the database without checking first.
 
@@ -230,7 +230,7 @@ const GuestBookMessageContent = ({ message }: GuestBookMessageContentProps): JSX
 
 The application contains a critical stored cross-site scripting vulnerability. Users can leave messages in the guest book for other users to read. However, the messages are not sanitized at all before being inserted into the database. The vulnerability is made possible by another horrible mistake in the frontend. The frontend is made using the React.js library which by default has some safety measures in place to prevent XSS. However, the application uses the aptly named "dangerouslySetInnerHTML" property to allow unescaped input to be inserted into the DOM.
 
-These two design mistakes allow users to enter JavaScript code via the guest book. This code will get stored in the database and is loaded when another user enters the guest book page. Taking advantage of for example the HTML `<img>` tags "onLoad" property, malicious code can be instantly executed when a victim loads the guest book page
+These two design mistakes allow users to enter JavaScript code via the guest book. This code will get stored in the database and is loaded when another user enters the guest book page. Taking advantage of for example the HTML `<img>` tags "onLoad" property, malicious code can be instantly executed when a victim loads the guest book page.
 
 ### Fix
 
