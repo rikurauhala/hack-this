@@ -24,6 +24,7 @@ cd ..
 touch .env
 current_dir=$(pwd)
 echo DATABASE_URL="$current_dir/data/database.db" >> .env
+echo LOG_FILE_PATH="$current_dir/data/log.txt" >> .env
 random_string=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 25 | head -n 1)
 echo SECRET=$random_string >> .env
 

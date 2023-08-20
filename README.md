@@ -129,7 +129,8 @@ $ sqlite3 database.db < init.sql
 # Create the .env file
 $ cd ..
 $ touch .env
-$ echo DATABASE_URL="path to your database file" >> .env
+$ echo DATABASE_URL="path to your database file (data/database.db)" >> .env
+$ echo LOG_FILE_PATH="path to your log file (data/log.txt)" >> .env
 $ echo SECRET="a random string" >> .env
 ```
 
