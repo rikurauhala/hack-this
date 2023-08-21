@@ -27,7 +27,6 @@ public getUser(username: string, password: string): Promise<User | null> {
     this.db.get(
       `SELECT id, username, admin FROM users WHERE username = '${username}' AND password = '${password}'`,
       (error: Error | null, row: User) => {
-}
 // ...
 ```
 
@@ -81,7 +80,7 @@ loginRouter.post('/', loginRateLimit, async (request: Request, response: Respons
 
 **branch** fixed, **file** [login.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L28)
 
-The first step to fix the vulnerability is to storing passwords as hashes in the database. Never store passwords as plaintext! Checking if the password is correct should be done by comparing only the hashes. The vulnerable SQL query can be taken care of by using parameterized queries for the login function. Modern frameworks and libraries are already making SQL injection more and more obsolete, but the developer still has to know what they are doing. Always use parameterized queries and never trust user input enough to allow it anywhere near the database without checking first.
+The first step to fix the vulnerability is to store passwords as hashes in the database. Never store passwords as plaintext! Checking if the password is correct should be done by comparing only the hashes. The vulnerable SQL query can be taken care of by using parameterized queries for the login function. Modern frameworks and libraries are already making SQL injection more and more obsolete, but the developer still has to know what they are doing. Always use parameterized queries and never trust user input enough to allow it anywhere near the database without checking first.
 
 ## FLAW 2: Broken Authentication 
 
@@ -154,9 +153,9 @@ messagesRouter.delete('/:messageId', async (request: Request, response: Response
 
 **branch** main, **file** [messages.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/messages.ts#L33)
 
-JSON Web Token (JWT) is used for authenticating users and checking if they have sufficient permissions to perform actions on the website. However, there is a problem: the developer of the application has intended the message deletion functionality to be available only for the admin account, but has forgotten to actually check the admin status before deleting the message. This means that anyone who is logged in and is in posession of a valid token can delete any message.
+JSON Web Token (JWT) is used for authenticating users and checking if they have sufficient permissions to perform actions on the website. However, there is a problem: the developer of the application has intended the message deletion functionality to be available only for the admin account, but has forgotten to actually check the admin status before deleting the message. This means that anyone who is logged in and is in possession of a valid token can delete any message.
 
-In the frontend the message deletion button is only visible for administrators but this doesn't stop anyone from simply making a DELETE request to the "/api/messages/<messageId>" endpoint and deleting any message they want. This demonstrates why it is extremely important to make sure the backend is secure. The frontend can be easily modified or bypassed.
+In the frontend the message deletion button is only visible for administrators but this doesn't stop anyone from simply making a DELETE request to the `/api/messages/<messageId>` endpoint and deleting any message they want. This demonstrates why it is extremely important to make sure the backend is secure. The frontend can be easily modified or bypassed.
 
 ### Fix
 
@@ -185,7 +184,7 @@ messagesRouter.delete('/:messageId', async (request: Request, response: Response
 
 **branch** fixed, **file** [message.ts](https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/messages.ts#L43)
 
-An easy fix is to simply verify that the user who made the request does actually have administrative permissions to delete the message. This is why the admin status is stored as a boolean and saved in the token.
+An easy fix is to simply verify that the user who made the request does actually have administrative privileges to delete the message. This is why the admin status is stored as a boolean and saved in the token.
 
 ## FLAW 4: Cross-Site Scripting
 
@@ -303,7 +302,7 @@ app.use(middleware.userExtractor);
 
 **branch** main, **file** [index.ts](https://github.com/rikurauhala/hack-this/blob/main/server/src/index.ts#L13)
 
-Middleware logging all requests to the server has been created but the developer has forgotten to turn actually use it. If all requests were properly being logged, the administrators could more easily detect any suspicious activity and take action if necessary.
+Middleware logging all requests to the server has been created but the developer has forgotten to actually use it. If all requests were properly being logged, the administrators could more easily detect any suspicious activity and take action if necessary.
 
 ### Fix
 

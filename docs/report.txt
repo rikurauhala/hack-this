@@ -1,7 +1,7 @@
 LINK: https://github.com/rikurauhala/hack-this  
-Installation instructions can be found in the README.md file.
+Installation instructions can be found in the README.md file. The repository also contains a Markdown version (docs/vulnerabilities.md) of this document with better formatting and useful code snippets.
 
-## FLAW 1: Injection (A1:2017)
+FLAW 1: Injection (A1:2017)
 
 https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/login.ts#L14
 https://github.com/rikurauhala/hack-this/blob/main/server/src/db/database.ts#L57
@@ -12,9 +12,9 @@ https://github.com/rikurauhala/hack-this/blob/fixed/server/data/init.sql#L7
 https://github.com/rikurauhala/hack-this/blob/fixed/server/src/db/database.ts#L57
 https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/login.ts#L28
 
-The first step to fix the vulnerability is to storing passwords as hashes in the database. Never store passwords as plaintext! Checking if the password is correct should be done by comparing only the hashes. The vulnerable SQL query can be taken care of by using parameterized queries for the login function. Modern frameworks and libraries are already making SQL injection more and more obsolete, but the developer still has to know what they are doing. Always use parameterized queries and never trust user input enough to allow it anywhere near the database without checking first.
+The first step to fix the vulnerability is to store passwords as hashes in the database. Never store passwords as plaintext! Checking if the password is correct should be done by comparing only the hashes. The vulnerable SQL query can be taken care of by using parameterized queries for the login function. Modern frameworks and libraries are already making SQL injection more and more obsolete, but the developer still has to know what they are doing. Always use parameterized queries and never trust user input enough to allow it anywhere near the database without checking first.
 
-## FLAW 2: Broken Authentication (A2:2017)
+FLAW 2: Broken Authentication (A2:2017)
 
 https://github.com/rikurauhala/hack-this/blob/main/server/data/init.sql#L35
 
@@ -29,19 +29,19 @@ As an additional security measure, rate limiting has been added to the login rou
 
 To improve the security further, weak passwords should never be allowed in the first place. Users and especially administrators should not be allowed to use passwords that can be easily guessed and/or are found in the dictionary.
 
-## FLAW 3: Broken Access Control (A5:2017)
+FLAW 3: Broken Access Control (A5:2017)
 
 https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/messages.ts#L33
 
-JSON Web Token (JWT) is used for authenticating users and checking if they have sufficient permissions to perform actions on the website. However, there is a problem: the developer of the application has intended the message deletion functionality to be available only for the admin account, but has forgotten to actually check the admin status before deleting the message. This means that anyone who is logged in and is in posession of a valid token can delete any message.
+JSON Web Token (JWT) is used for authenticating users and checking if they have sufficient permissions to perform actions on the website. However, there is a problem: the developer of the application has intended the message deletion functionality to be available only for the admin account, but has forgotten to actually check the admin status before deleting the message. This means that anyone who is logged in and is in possession of a valid token can delete any message.
 
 In the frontend the message deletion button is only visible for administrators but this doesn't stop anyone from simply making a DELETE request to the "/api/messages/<messageId>" endpoint and deleting any message they want. This demonstrates why it is extremely important to make sure the backend is secure. The frontend can be easily modified or bypassed.
 
 https://github.com/rikurauhala/hack-this/blob/fixed/server/src/routes/messages.ts#L43
 
-An easy fix is to simply verify that the user who made the request does actually have administrative permissions to delete the message. This is why the admin status is stored as a boolean and saved in the token.
+An easy fix is to simply verify that the user who made the request does actually have administrative privigileges to delete the message. This is why the admin status is stored as a boolean and saved in the token.
 
-## FLAW 4: Cross-Site Scripting (A7:2017)
+FLAW 4: Cross-Site Scripting (A7:2017)
 
 https://github.com/rikurauhala/hack-this/blob/main/server/src/routes/messages.ts#L22
 https://github.com/rikurauhala/hack-this/blob/main/web/src/components/GuestBook/GuestBookMessage/GuestBookMessageContent.tsx#L13
@@ -55,12 +55,12 @@ https://github.com/rikurauhala/hack-this/blob/fixed/web/src/components/GuestBook
 
 To fix the cross-site scripting vulnerability, messages are sanitized in the backend and the frontend no longer uses the dangerouslySetInnerHTML property.
 
-## FLAW 5: Insufficient Logging & Monitoring (A10:2017)
+FLAW 5: Insufficient Logging & Monitoring (A10:2017)
 
 https://github.com/rikurauhala/hack-this/blob/main/server/src/utils/middleware.ts#L71
 https://github.com/rikurauhala/hack-this/blob/main/server/src/index.ts#L13
 
-Middleware logging all requests to the server has been created but the developer has forgotten to turn actually use it. If all requests were properly being logged, the administrators could more easily detect any suspicious activity and take action if necessary.
+Middleware logging all requests to the server has been created but the developer has forgotten to actually use it. If all requests were properly being logged, the administrators could more easily detect any suspicious activity and take action if necessary.
 
 https://github.com/rikurauhala/hack-this/blob/fixed/server/src/index.ts#L13
 
