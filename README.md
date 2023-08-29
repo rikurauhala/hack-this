@@ -44,7 +44,7 @@
 > Do not use the code found in this repository in production. Also, do not use it to do anything illegal or exploit systems that you do not own or have a permission to enter. **For educational purposes only**.
 
 > **Note**  
-> For a fixed (secure) version of the application, see the [fixed](https://github.com/rikurauhala/hack-this/tree/fixed) branch.
+> For a fixed (secure) version of the application, see the [fixed](https://github.com/rikurauhala/hack-this/tree/fixed) branch. If you want to run the fixed version locally, switch to the branch `fixed`, reinstall dependencies and reinitialize the database.
 
 <details>
   <summary>
@@ -123,7 +123,7 @@ $ cd ./hack-this
 
 The repository contains the source code of both the frontend and the backend. Let's set up the backend first.
 
-See below for a list of commands to run. Fill in the environment variables `DATABASE_URL` and `SECRET` with your own values.
+See below for a list of commands to run. Fill in the environment variables `DATABASE_URL`, `LOG_FILE_PATH` and `SECRET` with your own values.
 
 ```bash
 # Change directory into the backend folder
@@ -140,8 +140,8 @@ $ sqlite3 database.db < init.sql
 # Create the .env file
 $ cd ..
 $ touch .env
-$ echo DATABASE_URL="$(pwd)/data/database.db)" >> .env
-$ echo LOG_FILE_PATH="$(pwd)/data/log.txt)" >> .env
+$ echo DATABASE_URL="$(pwd)/data/database.db" >> .env
+$ echo LOG_FILE_PATH="$(pwd)/data/log.txt" >> .env
 $ echo SECRET="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 25 | head -n 1)" >> .env
 ```
 
